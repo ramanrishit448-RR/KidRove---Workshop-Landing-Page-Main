@@ -35,4 +35,5 @@ const EnquirySchema: Schema = new Schema({
   },
 });
 
-export default mongoose.model<IEnquiry>('Enquiry', EnquirySchema);
+export default (mongoose.models.Enquiry as mongoose.Model<IEnquiry>) ||
+  mongoose.model<IEnquiry>('Enquiry', EnquirySchema);

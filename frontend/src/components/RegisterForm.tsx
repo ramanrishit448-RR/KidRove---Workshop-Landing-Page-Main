@@ -60,7 +60,7 @@ export default function RegisterForm() {
         }),
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
 
       if (response.ok && result.success) {
         setStatus('success');

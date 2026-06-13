@@ -60,4 +60,5 @@ const EnquirySchema = new mongoose_1.Schema({
         default: Date.now,
     },
 });
-exports.default = mongoose_1.default.model('Enquiry', EnquirySchema);
+exports.default = mongoose_1.default.models.Enquiry ||
+    mongoose_1.default.model('Enquiry', EnquirySchema);

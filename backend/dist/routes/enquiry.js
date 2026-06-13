@@ -7,16 +7,9 @@ const express_1 = require("express");
 const express_validator_1 = require("express-validator");
 const mongoose_1 = __importDefault(require("mongoose"));
 const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
 const Enquiry_1 = __importDefault(require("../models/Enquiry"));
+const backup_1 = require("../utils/backup");
 const router = (0, express_1.Router)();
-// Ensure backup storage directory exists
-const backupDir = path_1.default.join(__dirname, '../../data');
-if (!fs_1.default.existsSync(backupDir)) {
-    fs_1.default.mkdirSync(backupDir, { recursive: true });
-}
-const backupFilePath = path_1.default.join(backupDir, 'registrations.json');
-// Validation rules
 const enquiryValidationRules = [
     (0, express_validator_1.body)('name')
         .trim()
@@ -33,7 +26,6 @@ const enquiryValidationRules = [
         .matches(/^[0-9+\-\s()]{10,15}$/).withMessage('Please enter a valid 10-15 digit phone number'),
 ];
 router.post('/enquiry', enquiryValidationRules, async (req, res) => {
-    // Check validation errors
     const errors = (0, express_validator_1.validationResult)(req);
     if (!errors.isEmpty()) {
         res.status(400).json({
@@ -46,7 +38,6 @@ router.post('/enquiry', enquiryValidationRules, async (req, res) => {
         return;
     }
     const { name, email, phone, workshop } = req.body;
-    // Create enquiry payload
     const enquiryData = {
         name,
         email,
@@ -57,7 +48,6 @@ router.post('/enquiry', enquiryValidationRules, async (req, res) => {
     let savedToMongo = false;
     let savedToBackup = false;
     try {
-        // 1. Try saving to MongoDB if connected
         if (mongoose_1.default.connection.readyState === 1) {
             const newEnquiry = new Enquiry_1.default(enquiryData);
             await newEnquiry.save();
@@ -67,8 +57,8 @@ router.post('/enquiry', enquiryValidationRules, async (req, res) => {
     catch (dbError) {
         console.error('MongoDB Save Error:', dbError);
     }
-    // 2. Always write to local backup file as a transaction log or fallback
     try {
+        const backupFilePath = (0, backup_1.getBackupFilePath)();
         let existingData = [];
         if (fs_1.default.existsSync(backupFilePath)) {
             const fileContent = fs_1.default.readFileSync(backupFilePath, 'utf8');
@@ -81,7 +71,6 @@ router.post('/enquiry', enquiryValidationRules, async (req, res) => {
     catch (fsError) {
         console.error('Local Backup Write Error:', fsError);
     }
-    // Check if we succeeded in either of the stores
     if (savedToMongo || savedToBackup) {
         res.status(201).json({
             success: true,

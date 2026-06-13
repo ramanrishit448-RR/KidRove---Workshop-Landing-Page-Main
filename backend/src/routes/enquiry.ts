@@ -2,19 +2,11 @@ import { Router, Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 import mongoose from 'mongoose';
 import fs from 'fs';
-import path from 'path';
 import Enquiry from '../models/Enquiry';
+import { getBackupFilePath } from '../utils/backup';
 
 const router = Router();
 
-// Ensure backup storage directory exists
-const backupDir = path.join(__dirname, '../../data');
-if (!fs.existsSync(backupDir)) {
-  fs.mkdirSync(backupDir, { recursive: true });
-}
-const backupFilePath = path.join(backupDir, 'registrations.json');
-
-// Validation rules
 const enquiryValidationRules = [
   body('name')
     .trim()
@@ -35,7 +27,6 @@ router.post(
   '/enquiry',
   enquiryValidationRules,
   async (req: Request, res: Response): Promise<void> => {
-    // Check validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(400).json({
@@ -50,7 +41,6 @@ router.post(
 
     const { name, email, phone, workshop } = req.body;
 
-    // Create enquiry payload
     const enquiryData = {
       name,
       email,
@@ -63,7 +53,6 @@ router.post(
     let savedToBackup = false;
 
     try {
-      // 1. Try saving to MongoDB if connected
       if (mongoose.connection.readyState === 1) {
         const newEnquiry = new Enquiry(enquiryData);
         await newEnquiry.save();
@@ -73,13 +62,15 @@ router.post(
       console.error('MongoDB Save Error:', dbError);
     }
 
-    // 2. Always write to local backup file as a transaction log or fallback
     try {
-      let existingData = [];
+      const backupFilePath = getBackupFilePath();
+      let existingData: typeof enquiryData[] = [];
+
       if (fs.existsSync(backupFilePath)) {
         const fileContent = fs.readFileSync(backupFilePath, 'utf8');
         existingData = JSON.parse(fileContent || '[]');
       }
+
       existingData.push(enquiryData);
       fs.writeFileSync(backupFilePath, JSON.stringify(existingData, null, 2), 'utf8');
       savedToBackup = true;
@@ -87,7 +78,6 @@ router.post(
       console.error('Local Backup Write Error:', fsError);
     }
 
-    // Check if we succeeded in either of the stores
     if (savedToMongo || savedToBackup) {
       res.status(201).json({
         success: true,

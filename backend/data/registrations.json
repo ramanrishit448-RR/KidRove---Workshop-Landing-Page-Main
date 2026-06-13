@@ -33,5 +33,33 @@
     "phone": "8092273454",
     "workshop": "AI & Robotics Summer Workshop",
     "createdAt": "2026-06-13T09:30:05.303Z"
+  },
+  {
+    "name": "Test User",
+    "email": "test@example.com",
+    "phone": "9876543210",
+    "workshop": "AI & Robotics Summer Workshop",
+    "createdAt": "2026-06-13T09:38:49.073Z"
+  },
+  {
+    "name": "Proxy Test",
+    "email": "proxy@example.com",
+    "phone": "9876543210",
+    "workshop": "AI & Robotics Summer Workshop",
+    "createdAt": "2026-06-13T09:38:50.628Z"
+  },
+  {
+    "name": "Audit Test",
+    "email": "audit@example.com",
+    "phone": "9876543210",
+    "workshop": "AI & Robotics Summer Workshop",
+    "createdAt": "2026-06-13T09:39:44.976Z"
+  },
+  {
+    "name": "Theworld",
+    "email": "raman448@gmail.com",
+    "phone": "8092273457",
+    "workshop": "AI & Robotics Summer Workshop",
+    "createdAt": "2026-06-13T09:41:21.747Z"
   }
 ]
