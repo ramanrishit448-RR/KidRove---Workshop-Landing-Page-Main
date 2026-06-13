@@ -13,8 +13,8 @@ This project showcases a full-stack web application designed to promote and mana
 
 ## 📁 Repository Structure
 
-*   `/frontend` - React SPA (Vite, TypeScript, Tailwind CSS v4, Framer Motion, React Hook Form, Zod, Lucide Icons).
-*   `/backend` - Express Server (Node.js, TypeScript, Mongoose/MongoDB, express-validator).
+- `/frontend` - React SPA (Vite, TypeScript, Tailwind CSS v4, Framer Motion, React Hook Form, Zod, Lucide Icons).
+- `/backend` - Express Server (Node.js, TypeScript, Mongoose/MongoDB, express-validator).
 
 ## ✨ Key Features
 
@@ -31,12 +31,14 @@ This project showcases a full-stack web application designed to promote and mana
 ## 🚀 How to Run the Project
 
 ### Prerequisites
-*   Node.js (v20+ recommended)
-*   MongoDB (optional but automatically used if running locally on default port `27017`)
+
+- Node.js (v20+ recommended)
+- MongoDB (optional but automatically used if running locally on default port `27017`)
 
 ---
 
 ### Step 1: Run the Backend API Server
+
 1.  Navigate into the `backend` folder:
     ```bash
     cd backend
@@ -46,16 +48,19 @@ This project showcases a full-stack web application designed to promote and mana
     npm install
     ```
 3.  Start the server in development mode:
+
     ```bash
     npm run dev
     ```
-    *   The backend will start on `http://localhost:5000`.
-    *   It will automatically attempt to connect to MongoDB at `mongodb://127.0.0.1:27017/kidslab-workshop`.
-    *   **Fallback Mechanism**: If MongoDB is not running, the backend logs the connection error but remains running. Submissions will fall back to appending to `backend/data/registrations.json` so the form remains fully functional!
+
+    - The backend will start on `http://localhost:5000`.
+    - It will automatically attempt to connect to MongoDB at `mongodb://127.0.0.1:27017/kidslab-workshop`.
+    - **Fallback Mechanism**: If MongoDB is not running, the backend logs the connection error but remains running. Submissions will fall back to appending to `backend/data/registrations.json` so the form remains fully functional!
 
 ---
 
 ### Step 2: Run the Frontend Dev Server
+
 1.  Navigate into the `frontend` folder:
     ```bash
     cd frontend
@@ -65,16 +70,19 @@ This project showcases a full-stack web application designed to promote and mana
     npm install
     ```
 3.  Start the Vite dev server:
+
     ```bash
     npm run dev
     ```
-    *   The frontend will start on `http://localhost:5173`.
+
+    - The frontend will start on `http://localhost:5173`.
 
 ---
 
 ## 🏗️ Technical Architecture
 
 ### Backend
+
 - **Express.js** server with TypeScript for type safety
 - **MongoDB** via Mongoose for persistent data storage
 - **CORS** middleware for secure frontend-backend communication
@@ -83,6 +91,7 @@ This project showcases a full-stack web application designed to promote and mana
 - **Fallback System**: Automatic JSON file storage when MongoDB is unavailable
 
 ### Frontend
+
 - **React 19** with modern hooks and lazy component loading
 - **Tailwind CSS v4** for styling and responsive design
 - **Framer Motion** for smooth animations and transitions
@@ -91,6 +100,7 @@ This project showcases a full-stack web application designed to promote and mana
 - **Component-based Architecture**: Modular, reusable components
 
 ### Data Model
+
 ```typescript
 Enquiry {
   name: string (2-50 chars)
@@ -106,9 +116,11 @@ Enquiry {
 ## 📊 API Endpoints
 
 ### POST /api/enquiry
+
 Submit a new workshop enquiry.
 
 **Request Body:**
+
 ```json
 {
   "name": "John Doe",
@@ -119,6 +131,7 @@ Submit a new workshop enquiry.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -129,9 +142,11 @@ Submit a new workshop enquiry.
 ```
 
 ### GET /health
+
 Check backend and database status.
 
 **Response:**
+
 ```json
 {
   "status": "UP",
@@ -146,12 +161,14 @@ Check backend and database status.
 Create `.env` files in both backend and frontend directories as needed:
 
 **Backend (.env):**
+
 ```
 MONGODB_URI=mongodb://127.0.0.1:27017/kidslab-workshop
 FRONTEND_URL=http://localhost:5173
 ```
 
 **Frontend (.env):**
+
 ```
 VITE_API_BASE_URL=http://localhost:5000
 ```
@@ -163,6 +180,7 @@ VITE_API_BASE_URL=http://localhost:5000
 ### Build for Production
 
 **Backend:**
+
 ```bash
 cd backend
 npm run build
@@ -170,6 +188,7 @@ npm start
 ```
 
 **Frontend:**
+
 ```bash
 cd frontend
 npm run build
@@ -177,6 +196,7 @@ npm run preview
 ```
 
 ### Vercel Deployment
+
 The project includes `vercel.json` configuration for seamless Vercel deployment. Both frontend and backend can be deployed as separate functions or applications.
 
 ---
@@ -184,15 +204,18 @@ The project includes `vercel.json` configuration for seamless Vercel deployment.
 ## 🧪 Validation Rules
 
 ### Name
+
 - Length: 2-50 characters
 - Required
 
 ### Email
+
 - Must be a valid email format
 - Required
 - Normalized to lowercase
 
 ### Phone
+
 - Format: 10-15 digits with optional +, -, spaces, parentheses
 - Required
 - Examples: `9876543210`, `+91 9876543210`, `(987) 654-3210`
@@ -207,6 +230,7 @@ The backend implements a **dual-storage strategy**:
 2. **JSON Backup (Fallback)**: Regardless of MongoDB status, enquiries are also saved to `backend/data/registrations.json`
 
 This ensures:
+
 - No data loss even if database is temporarily unavailable
 - Offline-first capability for demo/assessment purposes
 - Easy debugging with human-readable JSON file
@@ -215,14 +239,14 @@ This ensures:
 
 ## 🛠️ Technology Stack Summary
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 19, TypeScript, Tailwind CSS v4, Vite, Framer Motion |
-| Backend | Node.js, Express.js, TypeScript |
-| Database | MongoDB, Mongoose |
-| Validation | Zod (Frontend), express-validator (Backend) |
-| Forms | React Hook Form |
-| Deployment | Vercel |
+| Layer      | Technology                                                 |
+| ---------- | ---------------------------------------------------------- |
+| Frontend   | React 19, TypeScript, Tailwind CSS v4, Vite, Framer Motion |
+| Backend    | Node.js, Express.js, TypeScript                            |
+| Database   | MongoDB, Mongoose                                          |
+| Validation | Zod (Frontend), express-validator (Backend)                |
+| Forms      | React Hook Form                                            |
+| Deployment | Vercel                                                     |
 
 ---
 
@@ -231,6 +255,7 @@ This ensures:
 **Project:** Kids Lab Workshop Landing Page
 **Organization:** GEMA Education Technology Private Limited
 **Assessment Focus:**
+
 - Full-stack development capabilities
 - API design and implementation
 - Frontend user experience and responsiveness
@@ -250,17 +275,15 @@ This project was developed using a modular, component-driven architecture. I sep
 ## 🚀 Future Improvements (100-150 words)
 
 If given more time, I would implement: (1) **Authentication & Authorization**: User login system with JWT tokens and role-based access control for admin dashboard. (2) **Admin Dashboard**: Backend UI to view, filter, and export enquiries with analytics. (3) **Email Notifications**: Automated confirmation emails to users and notification emails to admins. (4) **Rate Limiting**: Prevent spam submissions with rate limiting middleware. (5) **Comprehensive Testing**: Unit tests for validators, integration tests for API endpoints, and E2E tests using Cypress. (6) **Caching Layer**: Redis implementation for frequently accessed data. (7) **API Documentation**: Swagger/OpenAPI specifications for better developer experience. (8) **Enhanced Monitoring**: Application performance monitoring and error tracking with services like Sentry. (9) **Database Indexing**: Optimized MongoDB indexes for faster queries. (10) **CI/CD Pipeline**: GitHub Actions for automated testing and deployment.
-    ```
-    *   Open `http://localhost:5173/` in your browser.
-    *   Test filling out the form at the bottom. The frontend will communicate directly with the local server to record registrations.
+```    *   Open`http://localhost:5173/` in your browser. \* Test filling out the form at the bottom. The frontend will communicate directly with the local server to record registrations.
 
 ---
 
 ## 🌟 Evaluation Highlights & Criteria Addressed
 
-*   **UI Design & Responsiveness (25%)**: Color palette mapping directly to Kids Lab branding (purples, pinks, amber highlights). Completely responsive, beautiful card lists, custom inline SVGs (no broken image assets), custom scrollbar, and polished animations powered by `framer-motion`.
-*   **React Component Structure (20%)**: Highly modularized react components (Navbar, Hero, Details cards, Outcomes timelines, Accordion FAQs, Zod-integrated Registration form, Footer).
-*   **Code Quality & Readability (20%)**: Implemented fully in TypeScript with strict compile checks passing. Structured interfaces, clear naming, and robust exception-handling logs.
-*   **API Implementation (20%)**: Express router configuration, strict schema validation middleware (`express-validator`), Mongoose database write, and transaction fallback write.
-*   **Attention to Detail (15%)**: Fail-safe database offline backup, user loading spinners, disabled states, success transition checkmarks, custom favicon/SEO tags.
-*   **Bonus Points**: Fully implemented in **TypeScript**, styled with **Tailwind CSS**, client-side + server-side **Form validation**, and **Loading/Success states**.
+- **UI Design & Responsiveness (25%)**: Color palette mapping directly to Kids Lab branding (purples, pinks, amber highlights). Completely responsive, beautiful card lists, custom inline SVGs (no broken image assets), custom scrollbar, and polished animations powered by `framer-motion`.
+- **React Component Structure (20%)**: Highly modularized react components (Navbar, Hero, Details cards, Outcomes timelines, Accordion FAQs, Zod-integrated Registration form, Footer).
+- **Code Quality & Readability (20%)**: Implemented fully in TypeScript with strict compile checks passing. Structured interfaces, clear naming, and robust exception-handling logs.
+- **API Implementation (20%)**: Express router configuration, strict schema validation middleware (`express-validator`), Mongoose database write, and transaction fallback write.
+- **Attention to Detail (15%)**: Fail-safe database offline backup, user loading spinners, disabled states, success transition checkmarks, custom favicon/SEO tags.
+- **Bonus Points**: Fully implemented in **TypeScript**, styled with **Tailwind CSS**, client-side + server-side **Form validation**, and **Loading/Success states**.
