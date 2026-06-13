@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Mail, Phone, Loader2, CheckCircle2, AlertCircle, ArrowRight, Sparkles } from 'lucide-react';
 import Confetti from './ui/Confetti';
+import { API_BASE_URL } from '@/lib/api';
 
 const formSchema = z.object({
   name: z
@@ -48,7 +49,7 @@ export default function RegisterForm() {
     setErrorMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/enquiry', {
+      const response = await fetch(`${API_BASE_URL}/api/enquiry`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
