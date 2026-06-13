@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Sparkles, Menu, X, Sun, Moon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, Menu, X, Sun, Moon, Zap } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 
 interface NavbarProps {
@@ -57,12 +58,12 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center space-x-2 cursor-pointer group"
           >
-            <div className="bg-gradient-to-tr from-kidrove-purple to-kidrove-pink p-2 rounded-xl text-white shadow-md shadow-purple-200 dark:shadow-purple-900/40 group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-gradient-to-tr from-kidrove-purple to-kidrove-pink p-2 rounded-xl text-white shadow-md shadow-purple-200 dark:shadow-purple-900/40 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
               <Sparkles className="w-6 h-6 animate-pulse-slow" />
             </div>
             <span className="font-display font-extrabold text-2xl tracking-tight">
               <span className="text-kidrove-purple">Kid</span>
-              <span className="text-kidrove-pink">Labs</span>
+              <span className="text-kidrove-pink">rove</span>
             </span>
           </div>
 
@@ -87,12 +88,15 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
               {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
-            <button
+            <motion.button
               onClick={onEnrollClick}
-              className="bg-gradient-to-r from-kidrove-purple to-kidrove-purple-dark text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-purple-100 dark:shadow-purple-900/30 hover:shadow-purple-200 dark:hover:shadow-purple-800/40 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-kidrove-purple to-kidrove-pink text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-purple-100 dark:shadow-purple-900/30 hover:shadow-purple-200 dark:hover:shadow-purple-800/40 transition-all cursor-pointer flex items-center gap-1.5"
             >
+              <Zap className="w-4 h-4" />
               Enroll Now
-            </button>
+            </motion.button>
           </div>
 
           {/* Mobile: theme toggle + menu button */}
@@ -115,8 +119,14 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
       </div>
 
       {/* Mobile Menu */}
+      <AnimatePresence>
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-purple-50 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3 shadow-lg dark:shadow-slate-950/50">
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-purple-50 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3 shadow-lg dark:shadow-slate-950/50 overflow-hidden"
+        >
           <button
             onClick={() => scrollToSection("details")}
             className="block w-full text-left px-3 py-2 rounded-lg text-base font-medium text-kidrove-text-muted hover:bg-purple-50 dark:hover:bg-white/5 hover:text-kidrove-purple transition-colors cursor-pointer"
@@ -144,8 +154,9 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
           >
             Enroll Now
           </button>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </nav>
   );
 }

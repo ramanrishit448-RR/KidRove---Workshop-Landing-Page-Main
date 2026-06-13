@@ -1,7 +1,9 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import FunStats from './components/FunStats';
 import Details from './components/Details';
 import Outcomes from './components/Outcomes';
+import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import RegisterForm from './components/RegisterForm';
 import Footer from './components/Footer';
@@ -42,10 +44,14 @@ export default function App() {
           onEnrollClick={handleEnrollClick} 
           onExploreClick={handleExploreClick} 
         />
+
+        <FunStats />
         
         <Details />
         
         <Outcomes />
+
+        <Testimonials />
         
         <FAQ />
         

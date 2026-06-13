@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Users, Calendar, Globe, IndianRupee, Rocket } from 'lucide-react';
+import SectionHeader from './ui/SectionHeader';
 
 export default function Details() {
   const detailsData = [
@@ -7,41 +8,41 @@ export default function Details() {
       icon: <Users className="w-8 h-8 text-indigo-600" />,
       label: 'Age Group',
       value: '8–14 Years',
-      description: 'Curriculum customized for beginners & intermediate kids.',
-      bgColor: 'bg-indigo-50 border-indigo-100 hover:shadow-indigo-100',
-      tagColor: 'bg-indigo-100 text-indigo-800',
+      emoji: '🧒',
+      description: 'Tailored tracks for curious beginners and budding tech enthusiasts alike.',
+      bgColor: 'bg-indigo-50 border-indigo-100 hover:shadow-indigo-100 dark:bg-indigo-950/30 dark:border-indigo-800/40',
     },
     {
       icon: <Calendar className="w-8 h-8 text-pink-600" />,
       label: 'Duration',
       value: '4 Weeks',
-      description: '8 highly interactive live classes, project review, & support.',
-      bgColor: 'bg-pink-50 border-pink-100 hover:shadow-pink-100',
-      tagColor: 'bg-pink-100 text-pink-800',
+      emoji: '📅',
+      description: '8 live interactive sessions + project reviews, quizzes & mentor support.',
+      bgColor: 'bg-pink-50 border-pink-100 hover:shadow-pink-100 dark:bg-pink-950/30 dark:border-pink-800/40',
     },
     {
       icon: <Globe className="w-8 h-8 text-purple-600" />,
       label: 'Learning Mode',
       value: '100% Online',
-      description: 'Live interactive classes, quizzes, and digital simulators.',
-      bgColor: 'bg-purple-50 border-purple-100 hover:shadow-purple-100',
-      tagColor: 'bg-purple-100 text-purple-800',
+      emoji: '💻',
+      description: 'Join from anywhere! Live Zoom classes with 3D simulators & digital labs.',
+      bgColor: 'bg-purple-50 border-purple-100 hover:shadow-purple-100 dark:bg-purple-950/30 dark:border-purple-800/40',
     },
     {
       icon: <IndianRupee className="w-8 h-8 text-amber-600" />,
       label: 'Program Fee',
       value: '₹2,999',
-      description: 'All-inclusive price. Full access to simulators, certificates & notes.',
-      bgColor: 'bg-amber-50 border-amber-100 hover:shadow-amber-100',
-      tagColor: 'bg-amber-100 text-amber-800',
+      emoji: '💰',
+      description: 'All-inclusive: simulators, study materials, certificate & recordings.',
+      bgColor: 'bg-amber-50 border-amber-100 hover:shadow-amber-100 dark:bg-amber-950/30 dark:border-amber-800/40',
     },
     {
       icon: <Rocket className="w-8 h-8 text-rose-600" />,
       label: 'Start Date',
       value: '15 July 2026',
-      description: 'Reserve your spot today. Batch size limited to 15 kids per mentor.',
-      bgColor: 'bg-rose-50 border-rose-100 hover:shadow-rose-100',
-      tagColor: 'bg-rose-100 text-rose-800',
+      emoji: '🚀',
+      description: 'Only 15 seats per batch — secure your child\'s spot before it fills up!',
+      bgColor: 'bg-rose-50 border-rose-100 hover:shadow-rose-100 dark:bg-rose-950/30 dark:border-rose-800/40',
     },
   ];
 
@@ -49,40 +50,31 @@ export default function Details() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 40, rotate: -2 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        type: 'spring' as const,
-        stiffness: 100,
-        damping: 12,
-      },
+      rotate: 0,
+      transition: { type: 'spring' as const, stiffness: 120, damping: 14 },
     },
   };
 
   return (
-    <section id="details" className="py-20 bg-white dark:bg-slate-900 relative transition-colors duration-300">
+    <section id="details" className="py-20 bg-white dark:bg-slate-900 relative transition-colors duration-300 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-kidrove-text-dark mb-4">
-            Workshop Quick Overview
-          </h2>
-          <p className="text-lg text-kidrove-text-muted">
-            Everything you need to know about the AI & Robotics Summer Workshop program at a glance.
-          </p>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-kidrove-purple to-kidrove-pink mx-auto mt-4 rounded-full" />
-        </div>
+        <SectionHeader
+          badge="Program Snapshot"
+          badgeEmoji="📋"
+          title="Everything You Need to"
+          highlight="Know at a Glance"
+          description="A premium summer experience designed for busy parents and curious kids — flexible, affordable, and packed with real learning outcomes."
+        />
 
-        {/* Cards Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -94,27 +86,33 @@ export default function Details() {
             <motion.div
               key={index}
               variants={cardVariants}
-              whileHover={{ y: -6, scale: 1.03 }}
-              className={`flex flex-col p-6 rounded-3xl border bg-white dark:bg-slate-800/60 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-300 ${item.bgColor} ${
-                index === 3 || index === 4 ? 'md:col-span-1' : ''
-              }`}
+              whileHover={{ y: -10, scale: 1.04, rotate: index % 2 === 0 ? 1 : -1 }}
+              className={`flex flex-col p-6 rounded-3xl border bg-white dark:bg-slate-800/60 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-300 ${item.bgColor}`}
             >
-              {/* Icon Container */}
-              <div className="mb-4 inline-flex p-3 bg-white dark:bg-slate-700/50 rounded-2xl shadow-sm w-fit">
-                {item.icon}
-              </div>
+              <motion.span
+                className="text-2xl mb-2"
+                whileHover={{ scale: 1.3, rotate: 15 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                {item.emoji}
+              </motion.span>
 
-              {/* Label */}
+              <motion.div
+                whileHover={{ rotate: [0, -10, 10, 0] }}
+                transition={{ duration: 0.5 }}
+                className="mb-4 inline-flex p-3 bg-white dark:bg-slate-700/50 rounded-2xl shadow-sm w-fit"
+              >
+                {item.icon}
+              </motion.div>
+
               <span className="text-xs font-bold uppercase tracking-wider text-kidrove-text-muted mb-1">
                 {item.label}
               </span>
 
-              {/* Value */}
               <h3 className="font-display font-extrabold text-2xl text-kidrove-text-dark mb-2">
                 {item.value}
               </h3>
 
-              {/* Description */}
               <p className="text-sm text-kidrove-text-muted leading-relaxed flex-grow">
                 {item.description}
               </p>
