@@ -25,15 +25,15 @@ export default function Footer() {
               <Sparkles className="w-5 h-5" />
             </div>
             <span className="font-display font-extrabold text-2xl tracking-tight">
-              <span className="text-white">Kid</span>
-              <span className="text-kidrove-pink">rove</span>
+              <span className="text-white">Kids</span>
+              <span className="text-kidrove-pink"> Lab</span>
             </span>
           </div>
 
           {/* Social Links */}
           <div className="flex space-x-4">
             <a
-              href="https://facebook.com/kidrove"
+              href="https://facebook.com/kidslab"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-slate-800 hover:bg-kidrove-purple hover:text-white rounded-full transition-all duration-300 flex items-center justify-center"
@@ -44,7 +44,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://instagram.com/kidrove"
+              href="https://instagram.com/kidslab"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-slate-800 hover:bg-kidrove-pink hover:text-white rounded-full transition-all duration-300 flex items-center justify-center"
@@ -57,7 +57,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://twitter.com/kidrove"
+              href="https://twitter.com/kidslab"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-slate-800 hover:bg-sky-500 hover:text-white rounded-full transition-all duration-300 flex items-center justify-center"
@@ -68,7 +68,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/company/kidrove"
+              href="https://linkedin.com/company/kidslab"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-slate-800 hover:bg-indigo-600 hover:text-white rounded-full transition-all duration-300 flex items-center justify-center"
@@ -82,10 +82,10 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-xs">
-          <p>© {new Date().getFullYear()} Kidrove. All rights reserved. Designed for Future Innovators.</p>
+          <p>© {new Date().getFullYear()} Kids Lab. All rights reserved. Designed for Future Innovators.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="https://www.kidrove.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-              Kidrove Main Site
+            <a href="https://www.kidslab.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              Kids Lab Main Site
             </a>
             <a href="#" className="hover:text-white transition-colors">
               Privacy Policy

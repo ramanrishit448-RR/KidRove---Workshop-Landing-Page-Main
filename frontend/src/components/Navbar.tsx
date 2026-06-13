@@ -62,8 +62,8 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
               <Sparkles className="w-6 h-6 animate-pulse-slow" />
             </div>
             <span className="font-display font-extrabold text-2xl tracking-tight">
-              <span className="text-kidrove-purple">Kid</span>
-              <span className="text-kidrove-pink">rove</span>
+              <span className="text-kidrove-purple">Kids</span>
+              <span className="text-kidrove-pink"> Lab</span>
             </span>
           </div>
 

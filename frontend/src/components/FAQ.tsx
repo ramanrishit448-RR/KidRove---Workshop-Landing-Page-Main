@@ -21,7 +21,7 @@ export default function FAQ() {
     {
       emoji: '📹',
       question: 'How are the online classes conducted?',
-      answer: 'Live interactive Zoom sessions led by Kidrove-certified educators who specialize in teaching tech to kids. Each class includes live coding, fun quizzes, breakout activities, and hands-on simulator time. With max 15 students per mentor, every child gets personal attention.',
+      answer: 'Live interactive Zoom sessions led by Kids Lab-certified educators who specialize in teaching tech to kids. Each class includes live coding, fun quizzes, breakout activities, and hands-on simulator time. With max 15 students per mentor, every child gets personal attention.',
     },
     {
       emoji: '💻',
@@ -31,7 +31,7 @@ export default function FAQ() {
     {
       emoji: '🏆',
       question: 'Will my child get a certificate and recordings?',
-      answer: 'Yes! Students who complete their capstone project receive a verified Kidrove AI & Robotics Certificate of Excellence — a great addition to their learning portfolio. Every session is recorded and available within 24 hours, so missing a day is never a problem.',
+      answer: 'Yes! Students who complete their capstone project receive a verified Kids Lab AI & Robotics Certificate of Excellence — a great addition to their learning portfolio. Every session is recorded and available within 24 hours, so missing a day is never a problem.',
     },
     {
       emoji: '💰',
@@ -125,8 +125,8 @@ export default function FAQ() {
         >
           <p className="text-sm text-kidrove-text-muted">
             Still curious? Our friendly team is one message away!{' '}
-            <a href="mailto:support@kidrove.com" className="text-kidrove-purple font-bold hover:underline">
-              support@kidrove.com
+            <a href="mailto:support@kidslab.com" className="text-kidrove-purple font-bold hover:underline">
+              support@kidslab.com
             </a>{' '}
             or call{' '}
             <span className="font-bold text-kidrove-text-dark">+91 98765 43210</span>

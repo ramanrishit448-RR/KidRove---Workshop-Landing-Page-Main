@@ -25,7 +25,7 @@ const testimonials = [
     name: "Meera, Age 9",
     role: "Created her first AI game",
     quote:
-      "I made a game where the computer guesses what I draw! I showed it to my whole class. Now my friends want to join Kidrove too!",
+      "I made a game where the computer guesses what I draw! I showed it to my whole class. Now my friends want to join Kids Lab too!",
     emoji: "🎨",
     color: "from-amber-100 to-yellow-100 dark:from-amber-900/40 dark:to-yellow-900/40",
     border: "border-amber-200 dark:border-amber-800/50",
@@ -43,7 +43,7 @@ export default function Testimonials() {
           badge="Real Stories"
           badgeEmoji="💬"
           title="Kids & Parents"
-          highlight="Love Kidrove"
+          highlight="Love Kids Lab"
           description="Don't just take our word for it — hear from the young innovators and families who've experienced the magic firsthand."
           accent="pink"
         />

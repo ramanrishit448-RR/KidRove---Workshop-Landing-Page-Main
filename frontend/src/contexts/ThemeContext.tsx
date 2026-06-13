@@ -9,7 +9,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const STORAGE_KEY = "kidrove-theme";
+const STORAGE_KEY = "kidslab-theme";
 
 function getStoredTheme(): Theme {
   const stored = localStorage.getItem(STORAGE_KEY);

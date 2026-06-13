@@ -36,7 +36,7 @@ export default function Outcomes() {
       icon: <Award className="w-6 h-6 text-rose-600" />,
       title: 'Capstone Project & Certificate',
       emoji: '🏅',
-      desc: 'Showcase a unique AI/Robot project at the final exhibition and earn a Kidrove Certificate of Excellence!',
+      desc: 'Showcase a unique AI/Robot project at the final exhibition and earn a Kids Lab Certificate of Excellence!',
       badgeColor: 'bg-rose-100 dark:bg-rose-900/50',
     },
   ];
@@ -165,7 +165,7 @@ export default function Outcomes() {
                     />
                   </div>
                   <div className="font-mono text-xs text-purple-100 space-y-1.5">
-                    <div><span className="text-yellow-300">import</span> kidrove_robot <span className="text-yellow-300">as</span> bot</div>
+                    <div><span className="text-yellow-300">import</span> kidslab_robot <span className="text-yellow-300">as</span> bot</div>
                     <div>&nbsp;</div>
                     <div><span className="text-pink-300"># Start sensor checking</span></div>
                     <div>bot.initialize_sonar()</div>

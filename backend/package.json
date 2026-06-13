@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Express.js API for Kidrove Workshop Enquiry",
+  "description": "Express.js API for Kids Lab Workshop Enquiry",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
