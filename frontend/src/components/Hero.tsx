@@ -1,8 +1,23 @@
+import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Bot, ArrowRight, Sparkles, Play, Zap } from 'lucide-react';
-import { SplineScene } from '@/components/ui/splite';
 import { Spotlight } from '@/components/ui/spotlight';
 import FloatingDecor from '@/components/ui/FloatingDecor';
+
+const SplineScene = lazy(() =>
+  import('@/components/ui/splite').then((module) => ({ default: module.SplineScene }))
+);
+
+function SplineFallback() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-12 h-12 rounded-full border-4 border-purple-500/30 border-t-purple-400 animate-spin" />
+        <span className="text-purple-300 text-xs font-medium tracking-wider">Loading 3D scene…</span>
+      </div>
+    </div>
+  );
+}
 
 interface HeroProps {
   onEnrollClick: () => void;
@@ -182,10 +197,12 @@ export default function Hero({ onEnrollClick, onExploreClick }: HeroProps) {
                   fill="white"
                 />
 
-                <SplineScene
-                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-full"
-                />
+                <Suspense fallback={<SplineFallback />}>
+                  <SplineScene
+                    scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                    className="w-full h-full"
+                  />
+                </Suspense>
 
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-between z-20 pointer-events-none">
                   <div>

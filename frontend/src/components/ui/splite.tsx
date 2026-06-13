@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Application } from '@splinetool/runtime';
+import type { Application } from '@splinetool/runtime';
 
 interface SplineSceneProps {
   scene: string;
@@ -18,13 +18,16 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
 
     let disposed = false;
 
-    const app = new Application(canvas);
-    appRef.current = app;
+    import('@splinetool/runtime')
+      .then(({ Application }) => {
+        if (disposed) return;
 
-    app
-      .load(scene)
-      .then(() => {
-        if (!disposed) setLoading(false);
+        const app = new Application(canvas);
+        appRef.current = app;
+
+        return app.load(scene).then(() => {
+          if (!disposed) setLoading(false);
+        });
       })
       .catch((err: unknown) => {
         console.error('[SplineScene] Failed to load scene:', err);

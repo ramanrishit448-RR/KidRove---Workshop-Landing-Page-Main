@@ -4,7 +4,7 @@
   "description": "Express.js API for Kids Lab Workshop Enquiry",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "node ./node_modules/typescript/bin/tsc",
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "vercel-build": "npm run build"

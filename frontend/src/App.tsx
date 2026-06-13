@@ -1,12 +1,14 @@
+import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import FunStats from './components/FunStats';
-import Details from './components/Details';
-import Outcomes from './components/Outcomes';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
-import RegisterForm from './components/RegisterForm';
 import Footer from './components/Footer';
+
+const FunStats = lazy(() => import('./components/FunStats'));
+const Details = lazy(() => import('./components/Details'));
+const Outcomes = lazy(() => import('./components/Outcomes'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const FAQ = lazy(() => import('./components/FAQ'));
+const RegisterForm = lazy(() => import('./components/RegisterForm'));
 
 export default function App() {
   const scrollToSection = (id: string) => {
@@ -45,17 +47,14 @@ export default function App() {
           onExploreClick={handleExploreClick} 
         />
 
-        <FunStats />
-        
-        <Details />
-        
-        <Outcomes />
-
-        <Testimonials />
-        
-        <FAQ />
-        
-        <RegisterForm />
+        <Suspense fallback={null}>
+          <FunStats />
+          <Details />
+          <Outcomes />
+          <Testimonials />
+          <FAQ />
+          <RegisterForm />
+        </Suspense>
       </main>
 
       {/* Footer */}
