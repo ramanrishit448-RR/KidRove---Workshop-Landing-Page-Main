@@ -1,4 +1,4 @@
-# Kidrove Workshop Landing Page (AI & Robotics)
+# KidLabs Workshop Landing Page (AI & Robotics)
 
 This repository contains the completed Kidrove Internship Assessment Task. It features a modern, responsive landing page built with React + TypeScript + Tailwind CSS (v4) and an Express.js API backend integrated with MongoDB.
 
