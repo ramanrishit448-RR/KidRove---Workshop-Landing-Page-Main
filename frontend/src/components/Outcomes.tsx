@@ -53,7 +53,7 @@ export default function Outcomes() {
   };
 
   return (
-    <section id="outcomes" className="py-20 bg-gradient-to-b from-kidrove-bg to-white relative overflow-hidden">
+    <section id="outcomes" className="py-20 bg-gradient-to-b from-kidrove-bg to-white dark:to-slate-900 relative overflow-hidden transition-colors duration-300">
       {/* Background elements */}
       <div className="absolute top-1/3 right-0 w-80 h-80 bg-purple-100/50 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-10 left-[-50px] w-64 h-64 bg-indigo-50/70 rounded-full blur-2xl -z-10" />
@@ -88,7 +88,7 @@ export default function Outcomes() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="flex items-start space-x-4 p-4 rounded-2xl border border-purple-50 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
+                  className="flex items-start space-x-4 p-4 rounded-2xl border border-purple-50 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 shadow-sm hover:shadow-md transition-shadow duration-300"
                 >
                   <div className={`p-3 rounded-xl ${item.badgeColor} shrink-0`}>
                     {item.icon}

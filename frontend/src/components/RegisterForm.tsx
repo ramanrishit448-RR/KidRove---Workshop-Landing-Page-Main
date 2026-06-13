@@ -81,7 +81,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <section id="register" className="py-20 bg-gradient-to-b from-white to-purple-50 relative overflow-hidden">
+    <section id="register" className="py-20 bg-gradient-to-b from-white to-purple-50 dark:from-slate-900 dark:to-slate-950 relative overflow-hidden transition-colors duration-300">
       {/* Decorative Blob */}
       <div className="absolute top-1/4 left-[10%] w-96 h-96 bg-purple-200/30 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-1/4 right-[10%] w-96 h-96 bg-pink-100/30 rounded-full blur-3xl -z-10" />
@@ -89,7 +89,7 @@ export default function RegisterForm() {
       <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Form Container */}
-        <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-purple-100 shadow-xl shadow-purple-150/40">
+        <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-purple-100 dark:border-slate-700/50 shadow-xl shadow-purple-150/40 dark:shadow-slate-950/50">
           
           <AnimatePresence mode="wait">
             {status === 'success' ? (
@@ -112,7 +112,7 @@ export default function RegisterForm() {
                   </motion.div>
                 </div>
                 
-                <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-slate-800 mb-3">
+                <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-slate-800 dark:text-slate-100 mb-3">
                   Seats Reserved! 🎉
                 </h3>
                 <p className="text-sm sm:text-base text-kidrove-text-muted leading-relaxed mb-8">
@@ -177,10 +177,10 @@ export default function RegisterForm() {
                         type="text"
                         disabled={status === 'loading'}
                         placeholder="John Doe"
-                        className={`block w-full pl-11 pr-4 py-3.5 bg-slate-50/50 border rounded-2xl text-slate-800 text-sm transition-all outline-none focus:bg-white ${
+                        className={`block w-full pl-11 pr-4 py-3.5 bg-slate-50/50 dark:bg-slate-900/50 border rounded-2xl text-slate-800 dark:text-slate-100 text-sm transition-all outline-none focus:bg-white dark:focus:bg-slate-900 ${
                           errors.name
                             ? 'border-rose-300 focus:border-rose-500 focus:ring-1 focus:ring-rose-500'
-                            : 'border-slate-200 focus:border-kidrove-purple focus:ring-1 focus:ring-kidrove-purple shadow-sm'
+                            : 'border-slate-200 dark:border-slate-600 focus:border-kidrove-purple focus:ring-1 focus:ring-kidrove-purple shadow-sm'
                         }`}
                         {...register('name')}
                       />
@@ -206,10 +206,10 @@ export default function RegisterForm() {
                         type="email"
                         disabled={status === 'loading'}
                         placeholder="parent@example.com"
-                        className={`block w-full pl-11 pr-4 py-3.5 bg-slate-50/50 border rounded-2xl text-slate-800 text-sm transition-all outline-none focus:bg-white ${
+                        className={`block w-full pl-11 pr-4 py-3.5 bg-slate-50/50 dark:bg-slate-900/50 border rounded-2xl text-slate-800 dark:text-slate-100 text-sm transition-all outline-none focus:bg-white dark:focus:bg-slate-900 ${
                           errors.email
                             ? 'border-rose-300 focus:border-rose-500 focus:ring-1 focus:ring-rose-500'
-                            : 'border-slate-200 focus:border-kidrove-purple focus:ring-1 focus:ring-kidrove-purple shadow-sm'
+                            : 'border-slate-200 dark:border-slate-600 focus:border-kidrove-purple focus:ring-1 focus:ring-kidrove-purple shadow-sm'
                         }`}
                         {...register('email')}
                       />
@@ -235,10 +235,10 @@ export default function RegisterForm() {
                         type="tel"
                         disabled={status === 'loading'}
                         placeholder="9876543210"
-                        className={`block w-full pl-11 pr-4 py-3.5 bg-slate-50/50 border rounded-2xl text-slate-800 text-sm transition-all outline-none focus:bg-white ${
+                        className={`block w-full pl-11 pr-4 py-3.5 bg-slate-50/50 dark:bg-slate-900/50 border rounded-2xl text-slate-800 dark:text-slate-100 text-sm transition-all outline-none focus:bg-white dark:focus:bg-slate-900 ${
                           errors.phone
                             ? 'border-rose-300 focus:border-rose-500 focus:ring-1 focus:ring-rose-500'
-                            : 'border-slate-200 focus:border-kidrove-purple focus:ring-1 focus:ring-kidrove-purple shadow-sm'
+                            : 'border-slate-200 dark:border-slate-600 focus:border-kidrove-purple focus:ring-1 focus:ring-kidrove-purple shadow-sm'
                         }`}
                         {...register('phone')}
                       />

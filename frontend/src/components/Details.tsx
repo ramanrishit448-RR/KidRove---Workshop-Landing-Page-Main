@@ -69,7 +69,7 @@ export default function Details() {
   };
 
   return (
-    <section id="details" className="py-20 bg-white relative">
+    <section id="details" className="py-20 bg-white dark:bg-slate-900 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -95,12 +95,12 @@ export default function Details() {
               key={index}
               variants={cardVariants}
               whileHover={{ y: -6, scale: 1.03 }}
-              className={`flex flex-col p-6 rounded-3xl border bg-white shadow-sm hover:shadow-xl transition-all duration-300 ${item.bgColor} ${
+              className={`flex flex-col p-6 rounded-3xl border bg-white dark:bg-slate-800/60 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-300 ${item.bgColor} ${
                 index === 3 || index === 4 ? 'md:col-span-1' : ''
               }`}
             >
               {/* Icon Container */}
-              <div className="mb-4 inline-flex p-3 bg-white rounded-2xl shadow-sm w-fit">
+              <div className="mb-4 inline-flex p-3 bg-white dark:bg-slate-700/50 rounded-2xl shadow-sm w-fit">
                 {item.icon}
               </div>
 

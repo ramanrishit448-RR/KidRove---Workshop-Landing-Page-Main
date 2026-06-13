@@ -34,7 +34,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faqs" className="py-20 bg-white relative">
+    <section id="faqs" className="py-20 bg-white dark:bg-slate-900 relative transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -60,8 +60,8 @@ export default function FAQ() {
                 key={index}
                 className={`border rounded-2xl transition-all duration-300 ${
                   isOpen
-                    ? 'border-purple-200 bg-purple-50/20 shadow-md shadow-purple-100/30'
-                    : 'border-slate-100 bg-white hover:border-purple-100 hover:shadow-sm'
+                    ? 'border-purple-200 dark:border-purple-800/50 bg-purple-50/20 dark:bg-purple-900/20 shadow-md shadow-purple-100/30 dark:shadow-purple-900/20'
+                    : 'border-slate-100 dark:border-slate-700/50 bg-white dark:bg-slate-800/40 hover:border-purple-100 dark:hover:border-purple-800/30 hover:shadow-sm'
                 }`}
               >
                 {/* Header/Button */}
@@ -92,7 +92,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-kidrove-text-muted leading-relaxed border-t border-purple-50/50">
+                      <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-kidrove-text-muted leading-relaxed border-t border-purple-50/50 dark:border-purple-900/30">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -104,7 +104,7 @@ export default function FAQ() {
         </div>
 
         {/* Support Callout */}
-        <div className="mt-12 text-center p-6 bg-slate-50 rounded-2xl border border-slate-100">
+        <div className="mt-12 text-center p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700/50">
           <p className="text-sm text-kidrove-text-muted">
             Still have questions? We're here to help! Contact our support team at{' '}
             <a href="mailto:support@kidrove.com" className="text-kidrove-purple font-bold hover:underline">

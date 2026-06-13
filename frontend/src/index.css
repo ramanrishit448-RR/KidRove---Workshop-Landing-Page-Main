@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary-50: #f5f3ff;
   --color-primary-100: #ede9fe;
@@ -44,11 +46,19 @@
   animation: spotlight 2s ease 0.75s 1 forwards;
 }
 
+.dark {
+  --color-kidrove-bg: #0c0a14;
+  --color-kidrove-card: #1a1625;
+  --color-kidrove-text-dark: #f1f0f5;
+  --color-kidrove-text-muted: #a29baf;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--color-kidrove-bg);
   color: var(--color-kidrove-text-dark);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
@@ -74,4 +84,14 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #a29bfe;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1a1625;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #4c3d8f;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6c5ce7;
 }

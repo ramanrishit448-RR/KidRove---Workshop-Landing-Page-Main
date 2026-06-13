@@ -10,7 +10,7 @@ interface HeroProps {
 
 export default function Hero({ onEnrollClick, onExploreClick }: HeroProps) {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-purple-50 via-white to-kidrove-bg">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-purple-50 via-white to-kidrove-bg dark:from-slate-950 dark:via-slate-900 dark:to-kidrove-bg transition-colors duration-300">
       {/* Decorative Floating Blobs */}
       <div className="absolute top-10 left-[-10%] w-[35%] h-[35%] rounded-full bg-purple-200/40 blur-3xl -z-10" />
       <div className="absolute bottom-10 right-[-10%] w-[40%] h-[40%] rounded-full bg-pink-100/40 blur-3xl -z-10" />
@@ -48,7 +48,7 @@ export default function Hero({ onEnrollClick, onExploreClick }: HeroProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center space-x-2 bg-purple-100/80 border border-purple-200 px-4 py-2 rounded-full text-kidrove-purple font-bold text-sm mb-6 shadow-sm"
+              className="inline-flex items-center space-x-2 bg-purple-100/80 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-800/50 px-4 py-2 rounded-full text-kidrove-purple font-bold text-sm mb-6 shadow-sm"
             >
               <Bot className="w-4 h-4 text-kidrove-purple animate-bounce-slow" />
               <span>Future Innovators Camp 2026</span>
@@ -96,7 +96,7 @@ export default function Hero({ onEnrollClick, onExploreClick }: HeroProps) {
 
               <button
                 onClick={onExploreClick}
-                className="w-full sm:w-auto bg-white border border-purple-150 text-kidrove-purple px-8 py-4 rounded-full font-bold text-base shadow-md hover:bg-purple-50/50 hover:border-purple-200 transition-all flex items-center justify-center space-x-2 cursor-pointer"
+                className="w-full sm:w-auto bg-white dark:bg-slate-800 border border-purple-150 dark:border-purple-800/50 text-kidrove-purple px-8 py-4 rounded-full font-bold text-base shadow-md hover:bg-purple-50/50 dark:hover:bg-slate-700 hover:border-purple-200 dark:hover:border-purple-700 transition-all flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <Play className="w-4 h-4 fill-kidrove-purple text-kidrove-purple" />
                 <span>Explore Details</span>
@@ -108,7 +108,7 @@ export default function Hero({ onEnrollClick, onExploreClick }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-10 pt-8 border-t border-purple-100 flex flex-wrap justify-center lg:justify-start items-center gap-6 text-sm text-kidrove-text-muted"
+              className="mt-10 pt-8 border-t border-purple-100 dark:border-purple-900/50 flex flex-wrap justify-center lg:justify-start items-center gap-6 text-sm text-kidrove-text-muted"
             >
               <div className="flex items-center space-x-2">
                 <span className="text-kidrove-purple font-extrabold">✓</span>

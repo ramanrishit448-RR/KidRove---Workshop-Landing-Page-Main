@@ -32,7 +32,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-kidrove-bg overflow-x-hidden selection:bg-purple-100 selection:text-kidrove-purple">
+    <div className="min-h-screen flex flex-col bg-kidrove-bg overflow-x-hidden selection:bg-purple-100 selection:text-kidrove-purple dark:selection:bg-purple-900/50 dark:selection:text-purple-200 transition-colors duration-300">
       {/* Navigation bar */}
       <Navbar onEnrollClick={handleEnrollClick} />
 

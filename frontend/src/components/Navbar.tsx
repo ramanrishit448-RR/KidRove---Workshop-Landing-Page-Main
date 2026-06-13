@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Sparkles, Menu, X } from "lucide-react";
+import { Sparkles, Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface NavbarProps {
   onEnrollClick: () => void;
@@ -8,6 +9,7 @@ interface NavbarProps {
 export default function Navbar({ onEnrollClick }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +23,7 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
     setIsMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // height of navbar
+      const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -34,11 +36,17 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
     }
   };
 
+  const navLinkClass =
+    "text-kidrove-text-muted hover:text-kidrove-purple dark:hover:text-kidrove-purple-light font-medium text-sm transition-colors cursor-pointer";
+
+  const themeToggleClass =
+    "p-2.5 rounded-full text-kidrove-text-muted hover:text-kidrove-purple dark:hover:text-kidrove-purple-light hover:bg-purple-50 dark:hover:bg-white/10 transition-all cursor-pointer";
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-md py-3"
+          ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-md dark:shadow-slate-950/50 py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -49,7 +57,7 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center space-x-2 cursor-pointer group"
           >
-            <div className="bg-gradient-to-tr from-kidrove-purple to-kidrove-pink p-2 rounded-xl text-white shadow-md shadow-purple-200 group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-gradient-to-tr from-kidrove-purple to-kidrove-pink p-2 rounded-xl text-white shadow-md shadow-purple-200 dark:shadow-purple-900/40 group-hover:scale-110 transition-transform duration-300">
               <Sparkles className="w-6 h-6 animate-pulse-slow" />
             </div>
             <span className="font-display font-extrabold text-2xl tracking-tight">
@@ -59,44 +67,48 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("details")}
-              className="text-kidrove-text-muted hover:text-kidrove-purple font-medium text-sm transition-colors cursor-pointer"
-            >
+          <div className="hidden md:flex items-center space-x-6">
+            <button onClick={() => scrollToSection("details")} className={navLinkClass}>
               Details
             </button>
-            <button
-              onClick={() => scrollToSection("outcomes")}
-              className="text-kidrove-text-muted hover:text-kidrove-purple font-medium text-sm transition-colors cursor-pointer"
-            >
+            <button onClick={() => scrollToSection("outcomes")} className={navLinkClass}>
               Outcomes
             </button>
-            <button
-              onClick={() => scrollToSection("faqs")}
-              className="text-kidrove-text-muted hover:text-kidrove-purple font-medium text-sm transition-colors cursor-pointer"
-            >
+            <button onClick={() => scrollToSection("faqs")} className={navLinkClass}>
               FAQs
             </button>
+
+            <button
+              onClick={toggleTheme}
+              className={themeToggleClass}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              title={theme === "dark" ? "Light mode" : "Dark mode"}
+            >
+              {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+
             <button
               onClick={onEnrollClick}
-              className="bg-gradient-to-r from-kidrove-purple to-kidrove-purple-dark text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-purple-100 hover:shadow-purple-200 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
+              className="bg-gradient-to-r from-kidrove-purple to-kidrove-purple-dark text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-purple-100 dark:shadow-purple-900/30 hover:shadow-purple-200 dark:hover:shadow-purple-800/40 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
             >
               Enroll Now
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile: theme toggle + menu button */}
+          <div className="md:hidden flex items-center gap-1">
+            <button
+              onClick={toggleTheme}
+              className={themeToggleClass}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-kidrove-text-dark p-2 hover:bg-purple-50 rounded-lg transition-colors cursor-pointer"
+              className="text-kidrove-text-dark dark:text-kidrove-text-dark p-2 hover:bg-purple-50 dark:hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -104,22 +116,22 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-purple-50 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+        <div className="md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-purple-50 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3 shadow-lg dark:shadow-slate-950/50">
           <button
             onClick={() => scrollToSection("details")}
-            className="block w-full text-left px-3 py-2 rounded-lg text-base font-medium text-kidrove-text-muted hover:bg-purple-50 hover:text-kidrove-purple transition-colors cursor-pointer"
+            className="block w-full text-left px-3 py-2 rounded-lg text-base font-medium text-kidrove-text-muted hover:bg-purple-50 dark:hover:bg-white/5 hover:text-kidrove-purple transition-colors cursor-pointer"
           >
             Details
           </button>
           <button
             onClick={() => scrollToSection("outcomes")}
-            className="block w-full text-left px-3 py-2 rounded-lg text-base font-medium text-kidrove-text-muted hover:bg-purple-50 hover:text-kidrove-purple transition-colors cursor-pointer"
+            className="block w-full text-left px-3 py-2 rounded-lg text-base font-medium text-kidrove-text-muted hover:bg-purple-50 dark:hover:bg-white/5 hover:text-kidrove-purple transition-colors cursor-pointer"
           >
             Outcomes
           </button>
           <button
             onClick={() => scrollToSection("faqs")}
-            className="block w-full text-left px-3 py-2 rounded-lg text-base font-medium text-kidrove-text-muted hover:bg-purple-50 hover:text-kidrove-purple transition-colors cursor-pointer"
+            className="block w-full text-left px-3 py-2 rounded-lg text-base font-medium text-kidrove-text-muted hover:bg-purple-50 dark:hover:bg-white/5 hover:text-kidrove-purple transition-colors cursor-pointer"
           >
             FAQs
           </button>
@@ -128,7 +140,7 @@ export default function Navbar({ onEnrollClick }: NavbarProps) {
               setIsMobileMenuOpen(false);
               onEnrollClick();
             }}
-            className="block w-full text-center bg-gradient-to-r from-kidrove-purple to-kidrove-pink text-white py-3 rounded-full font-bold shadow-lg shadow-purple-100 cursor-pointer"
+            className="block w-full text-center bg-gradient-to-r from-kidrove-purple to-kidrove-pink text-white py-3 rounded-full font-bold shadow-lg shadow-purple-100 dark:shadow-purple-900/30 cursor-pointer"
           >
             Enroll Now
           </button>
