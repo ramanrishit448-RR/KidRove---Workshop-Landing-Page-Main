@@ -1,4 +1,5 @@
-import ConstellationCanvas from './ConstellationCanvas';
+import ThreeHeroCanvas from './ThreeHeroCanvas';
+import { ArrowUpRight } from 'lucide-react';
 
 interface HeroProps {
   onEnrollClick: () => void;
@@ -7,59 +8,60 @@ interface HeroProps {
 
 export default function Hero({ onEnrollClick, onExploreClick }: HeroProps) {
   return (
-    <section className="relative min-h-screen bg-[#000000] pt-32 pb-20 md:pt-40 md:pb-28 px-6 md:px-12 flex items-center overflow-hidden">
-      <div className="max-w-[1280px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10">
+    <section className="relative min-h-screen bg-[#e5e5e5] pt-36 pb-20 px-6 md:px-12 flex items-center overflow-hidden">
+      <div className="max-w-[1200px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        {/* Left Column: Typographic composition */}
-        <div className="lg:col-span-7 flex flex-col items-start space-y-8">
+        {/* Left Column: Massive Condensed Editorial Typography (50% Width) */}
+        <div className="lg:col-span-6 flex flex-col items-start space-y-6">
           
-          {/* Amber Tag */}
-          <div className="label-amber flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#ffb829]"></span>
-            SUMMER 2026 • AGES 8–14 • LIMITED SEATS
+          {/* Mint Tag Pill */}
+          <div className="tag-mint">
+            <span>●</span>
+            <span>SUMMER LABORATORY 2026 • AGES 8–14</span>
           </div>
 
-          {/* Outsized Left-aligned Display Headline */}
-          <h1 className="text-display-dala text-white tracking-[-0.04em] font-normal leading-[1.05] max-w-[780px]">
-            Where Kids Become Tech Superheroes.
+          {/* Compressed Condensed Headline (130px Display Scale, 0.9 Leading, All-Caps) */}
+          <h1 className="text-display-xl-condensed max-w-[620px]">
+            WHERE KIDS BECOME TECH SUPERHEROES.
           </h1>
 
-          {/* Signature 18px Weight 200 Ultra-Light Body Copy */}
-          <p className="text-body-light text-white max-w-[500px]">
-            The ultimate 4-week AI & Robotics adventure! Your child will code games, train smart machines, and build virtual robots — all through hands-on projects that feel like play, not homework.
+          {/* 16px Body Copy */}
+          <p className="text-[16px] leading-[1.25] text-[#444444] font-normal max-w-[500px]">
+            The ultimate 4-week AI & Robotics adventure. Your child will code games, train smart machines, and build virtual 3D robots — tactile learning that feels like play, not homework.
           </p>
 
           {/* Action Row */}
-          <div className="pt-4 flex flex-wrap items-center gap-6">
+          <div className="pt-4 flex flex-wrap items-center gap-4">
             <button
               onClick={onEnrollClick}
-              className="btn-electric-iris"
+              className="btn-dark-filled"
             >
-              ENROLL NOW — ₹2,999
+              <span>GRAB YOUR SPOT — ₹2,999</span>
+              <ArrowUpRight className="w-4 h-4 text-[#d1ffca]" />
             </button>
+
             <button
               onClick={onExploreClick}
-              className="text-[#9a9a9a] hover:text-white text-[14px] font-normal uppercase tracking-[0.025em] transition-colors cursor-pointer bg-transparent border-none py-3"
+              className="btn-ghost-border"
             >
-              SEE WHAT'S INSIDE →
+              MORE DETAILS
             </button>
           </div>
 
-          {/* Trust badges */}
-          <div className="pt-8 flex flex-wrap gap-4 text-[13px] uppercase text-[#9a9a9a] tracking-[0.025em]">
-            <span>🎓 Verified Certificate</span>
-            <span>•</span>
-            <span>👨‍🏫 Live Expert Mentors</span>
-            <span>•</span>
-            <span>🎯 Max 15 Kids Per Batch</span>
+          {/* Monospace System Metadata */}
+          <div className="pt-6 border-t border-[#c6c6c6] w-full max-w-[500px] flex items-center justify-between text-[12px] font-mono text-[#979797]">
+            <span>[VERIFIED CERTIFICATE]</span>
+            <span>[15 KIDS MAX]</span>
+            <span>[LIVE MENTORS]</span>
           </div>
 
         </div>
 
-        {/* Right Column: Signature Hero Constellation Particle Visual */}
-        <div className="lg:col-span-5 relative w-full flex items-center justify-center">
-          <ConstellationCanvas />
+        {/* Right Column: Three.js Interactive 3D Tactile Render Canvas (50% Width) */}
+        <div className="lg:col-span-6 relative w-full flex items-center justify-center">
+          <ThreeHeroCanvas />
         </div>
+
       </div>
     </section>
   );

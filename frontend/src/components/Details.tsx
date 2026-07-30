@@ -3,80 +3,84 @@ import { Users, Calendar, Globe, IndianRupee, Rocket } from 'lucide-react';
 export default function Details() {
   const detailsData = [
     {
-      icon: <Users className="w-6 h-6 text-[#8052ff]" />,
+      icon: <Users className="w-5 h-5 text-[#000000]" />,
       label: 'AGE GROUP',
-      value: '8–14 Years',
-      emoji: '🧒',
+      value: '8–14 YEARS',
+      tag: 'BEGINNER / INT',
       description: 'Tailored tracks for curious beginners and budding tech enthusiasts alike.',
     },
     {
-      icon: <Calendar className="w-6 h-6 text-[#ffb829]" />,
+      icon: <Calendar className="w-5 h-5 text-[#000000]" />,
       label: 'DURATION',
-      value: '4 Weeks',
-      emoji: '📅',
+      value: '4 WEEKS',
+      tag: '8 LIVE SESSIONS',
       description: '8 live interactive sessions + project reviews, quizzes & mentor support.',
     },
     {
-      icon: <Globe className="w-6 h-6 text-[#15846e]" />,
+      icon: <Globe className="w-5 h-5 text-[#000000]" />,
       label: 'LEARNING MODE',
-      value: '100% Online',
-      emoji: '💻',
+      value: '100% ONLINE',
+      tag: 'GLOBAL ZOOM',
       description: 'Join from anywhere! Live Zoom classes with 3D simulators & digital labs.',
     },
     {
-      icon: <IndianRupee className="w-6 h-6 text-[#8052ff]" />,
+      icon: <IndianRupee className="w-5 h-5 text-[#000000]" />,
       label: 'PROGRAM FEE',
       value: '₹2,999',
-      emoji: '💰',
+      tag: 'ALL-INCLUSIVE',
       description: 'All-inclusive: simulators, study materials, certificate & recordings.',
     },
     {
-      icon: <Rocket className="w-6 h-6 text-[#ffb829]" />,
+      icon: <Rocket className="w-5 h-5 text-[#000000]" />,
       label: 'START DATE',
-      value: '15 July 2026',
-      emoji: '🚀',
+      value: '15 JULY 2026',
+      tag: '15 SEATS MAX',
       description: 'Only 15 seats per batch — secure your child\'s spot before it fills up!',
     },
   ];
 
   return (
-    <section id="details" className="py-24 md:py-36 bg-[#000000] relative overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 space-y-16">
+    <section id="details" className="py-20 md:py-28 bg-[#e5e5e5]">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12 space-y-12">
         
         {/* Section Header */}
-        <div className="space-y-4 max-w-[680px]">
-          <div className="label-amber">PROGRAM SNAPSHOT</div>
-          <h2 className="text-heading-lg-dala text-white tracking-[-0.04em]">
-            Everything you need to know at a glance.
+        <div className="space-y-4 max-w-[720px]">
+          <div className="tag-mint">PROGRAM SNAPSHOT</div>
+          <h2 className="text-display-lg-condensed">
+            EVERYTHING YOU NEED TO KNOW AT A GLANCE.
           </h2>
-          <p className="text-body-light text-[#bdbdbd]">
-            A premium learning experience designed for busy parents and curious kids — flexible, accessible, and packed with real skill outcomes.
+          <p className="text-[16px] leading-[1.25] text-[#444444] font-normal">
+            A premium summer experience designed for busy parents and curious kids — flexible, affordable, and rich in real learning outcomes.
           </p>
         </div>
 
-        {/* Floating Snapshot Grid on Pure Black Canvas */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+        {/* Flat White Cards Grid (32px radius, no shadow) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {detailsData.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col space-y-4 p-6 rounded-[24px] bg-[#000000] border-none group transition-transform duration-300 hover:-translate-y-1"
+              className="card-flat-white p-6 flex flex-col justify-between space-y-6"
             >
-              <div className="flex items-center justify-between">
-                <div className="p-3 rounded-full bg-[#111111] inline-flex items-center justify-center">
-                  {item.icon}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="p-2.5 rounded-[8px] bg-[#f3f3f3]">
+                    {item.icon}
+                  </div>
+                  <span className="tag-voltage text-[11px]">
+                    {item.tag}
+                  </span>
                 </div>
-                <span className="text-2xl">{item.emoji}</span>
+
+                <div className="font-mono-tag text-[#979797]">
+                  {item.label}
+                </div>
+
+                <h3 className="font-condensed-display text-[36px] font-bold text-[#000000] leading-[0.9]">
+                  {item.value}
+                </h3>
               </div>
 
-              <div className="text-[12px] font-semibold uppercase tracking-[0.025em] text-[#8052ff]">
-                {item.label}
-              </div>
-
-              <h3 className="text-[27px] font-normal text-white font-sans leading-tight">
-                {item.value}
-              </h3>
-
-              <p className="text-body-light text-[#bdbdbd] text-[15px] leading-relaxed flex-grow">
+              <p className="text-[14px] text-[#444444] leading-relaxed pt-4 border-t border-[#f3f3f3]">
                 {item.description}
               </p>
             </div>

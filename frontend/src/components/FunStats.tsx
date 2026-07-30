@@ -7,32 +7,37 @@ interface StatItem {
   value: number;
   suffix: string;
   label: string;
+  monoTag: string;
 }
 
 const stats: StatItem[] = [
   {
-    icon: <Users className="w-6 h-6 text-[#8052ff]" />,
+    icon: <Users className="w-5 h-5 text-[#000000]" />,
     value: 500,
     suffix: "+",
     label: "Young Innovators Taught",
+    monoTag: "METRIC 01",
   },
   {
-    icon: <Trophy className="w-6 h-6 text-[#ffb829]" />,
+    icon: <Trophy className="w-5 h-5 text-[#000000]" />,
     value: 1200,
     suffix: "+",
     label: "Projects Built by Kids",
+    monoTag: "METRIC 02",
   },
   {
-    icon: <Star className="w-6 h-6 text-[#15846e]" />,
+    icon: <Star className="w-5 h-5 text-[#000000]" />,
     value: 4.9,
     suffix: "★",
     label: "Parent Satisfaction Rating",
+    monoTag: "METRIC 03",
   },
   {
-    icon: <Heart className="w-6 h-6 text-[#8052ff]" />,
+    icon: <Heart className="w-5 h-5 text-[#000000]" />,
     value: 15,
     suffix: "",
     label: "Kids Per Mentor (Max)",
+    monoTag: "METRIC 04",
   },
 ];
 
@@ -69,24 +74,31 @@ function AnimatedNumber({ value, suffix, isDecimal }: { value: number; suffix: s
 
 export default function FunStats() {
   return (
-    <section className="relative py-20 bg-[#000000] border-t border-b border-[#141414]">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 space-y-12">
-        <div className="label-amber text-center">
-          TRUSTED BY FAMILIES WORLDWIDE
+    <section className="py-20 bg-[#e5e5e5]">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12 space-y-8">
+        
+        <div className="flex items-center justify-between">
+          <span className="tag-mint font-mono-tag">
+            COMMUNITY & SYSTEM METRICS
+          </span>
+          <span className="font-mono-tag text-[#979797]">02 // AUDITED DATA</span>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {stats.map((stat) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, idx) => (
             <div
-              key={stat.label}
-              className="flex flex-col items-center text-center space-y-3"
+              key={idx}
+              className="card-flat-white p-6 flex flex-col justify-between space-y-4 min-h-[220px]"
             >
-              <div className="p-3 rounded-full bg-[#111111] inline-flex items-center justify-center">
-                {stat.icon}
+              <div className="flex items-center justify-between border-b border-[#f3f3f3] pb-3">
+                <span className="font-mono-tag text-[#979797]">{stat.monoTag}</span>
+                <div className="p-2 rounded-[8px] bg-[#f3f3f3]">
+                  {stat.icon}
+                </div>
               </div>
 
-              {/* Outsized weight-400 headline number */}
-              <div className="text-[78px] font-normal leading-none tracking-[-3.12px] text-white font-sans">
+              {/* 80px Condensed Display Headline Number */}
+              <div className="text-display-lg-condensed text-[#000000] font-bold tracking-tight">
                 <AnimatedNumber
                   value={stat.value}
                   suffix={stat.suffix}
@@ -94,12 +106,13 @@ export default function FunStats() {
                 />
               </div>
 
-              <div className="text-body-light text-[#bdbdbd] text-[16px]">
+              <div className="text-[14px] font-medium text-[#444444]">
                 {stat.label}
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

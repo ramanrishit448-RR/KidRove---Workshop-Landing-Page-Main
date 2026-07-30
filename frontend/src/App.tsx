@@ -9,7 +9,6 @@ import FAQ from './components/FAQ';
 import RegisterForm from './components/RegisterForm';
 import Footer from './components/Footer';
 import RequestAccessModal from './components/RequestAccessModal';
-import AmbientParticles from './components/AmbientParticles';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,18 +24,15 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white flex flex-col relative overflow-x-hidden selection:bg-[#8052ff] selection:text-white">
-      {/* Background Ambient Drifting Triangle Particles */}
-      <AmbientParticles />
-
-      {/* Top Navigation */}
+    <div className="min-h-screen bg-[#e5e5e5] text-[#000000] flex flex-col relative overflow-x-hidden selection:bg-[#d1ffca] selection:text-[#000000]">
+      {/* Floating 48px Nav Pill Header */}
       <Navbar 
         onRequestAccess={handleOpenModal} 
         onNavigate={handleNavigate}
       />
 
       {/* Main Content Sections */}
-      <main className="flex-grow z-10">
+      <main className="flex-grow">
         <Hero 
           onEnrollClick={handleOpenModal}
           onExploreClick={() => handleNavigate('details')}
@@ -49,10 +45,10 @@ export default function App() {
         <RegisterForm />
       </main>
 
-      {/* Footer */}
+      {/* Inverted Dark Footer */}
       <Footer />
 
-      {/* Request Access Overlay Modal */}
+      {/* Registration Modal Overlay */}
       <RequestAccessModal 
         isOpen={isModalOpen}
         onClose={handleCloseModal}

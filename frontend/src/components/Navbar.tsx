@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 interface NavbarProps {
   onRequestAccess: () => void;
@@ -28,74 +29,67 @@ export default function Navbar({ onRequestAccess, onNavigate }: NavbarProps) {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 py-6 px-6 md:px-12 ${
-      isScrolled ? "bg-black/90 backdrop-blur-md border-b border-[#141414]" : "bg-transparent"
-    }`}>
-      <div className="max-w-[1280px] mx-auto flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 h-[8rem] flex items-center justify-center px-4 pointer-events-none">
+      
+      {/* Floating 48px Nav Pill Container */}
+      <nav className={`pointer-events-auto max-w-[1200px] w-full flex items-center justify-between px-6 py-3 rounded-[48px] bg-[#ffffff] transition-all duration-300 ${
+        isScrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.08)] bg-[#ffffff]" : "shadow-none"
+      }`}>
         
-        {/* Logo Lockup */}
+        {/* Brand Mark Lockup */}
         <a 
           href="#" 
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-3 text-[#000000] group"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
-          <div className="w-6 h-6 flex items-center justify-center">
-            <svg viewBox="0 0 32 32" className="w-full h-full">
-              <defs>
-                <linearGradient id="dalaLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#8052ff" />
-                  <stop offset="100%" stopColor="#15846e" />
-                </linearGradient>
-              </defs>
-              <polygon points="16,3 30,28 2,28" fill="url(#dalaLogoGrad)" />
-            </svg>
+          <div className="w-8 h-8 rounded-full bg-[#000000] text-[#d1ffca] flex items-center justify-center font-bold text-[14px]">
+            D
           </div>
-          <span className="text-[20px] font-normal tracking-tight text-white font-sans">
-            Dala Kids
+          <span className="font-condensed-display text-[24px] font-bold tracking-tight text-[#000000] uppercase">
+            DAYOS AI
           </span>
         </a>
 
-        {/* Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-10 text-[14px] font-semibold uppercase tracking-[0.025em]">
+        {/* Center Links with Monospace Indicators */}
+        <div className="hidden md:flex items-center space-x-8 text-[16px] font-medium text-[#444444]">
           <button
             onClick={() => handleNavClick('details')}
-            className="text-[#9a9a9a] hover:text-white transition-colors duration-200 cursor-pointer bg-transparent border-none"
+            className="hover:text-[#000000] transition-colors cursor-pointer bg-transparent border-none flex items-center gap-2"
           >
-            DETAILS
+            <span className="font-mono-tag text-[#979797]">01</span>
+            <span>SNAPSHOT</span>
           </button>
           <button
             onClick={() => handleNavClick('outcomes')}
-            className="text-[#9a9a9a] hover:text-white transition-colors duration-200 cursor-pointer bg-transparent border-none"
+            className="hover:text-[#000000] transition-colors cursor-pointer bg-transparent border-none flex items-center gap-2"
           >
-            OUTCOMES
+            <span className="font-mono-tag text-[#979797]">02</span>
+            <span>CURRICULUM</span>
           </button>
           <button
             onClick={() => handleNavClick('faqs')}
-            className="text-[#9a9a9a] hover:text-white transition-colors duration-200 cursor-pointer bg-transparent border-none"
+            className="hover:text-[#000000] transition-colors cursor-pointer bg-transparent border-none flex items-center gap-2"
           >
-            FAQS
+            <span className="font-mono-tag text-[#979797]">03</span>
+            <span>FAQS</span>
           </button>
-          <button
-            onClick={() => handleNavClick('register')}
-            className="text-[#9a9a9a] hover:text-white transition-colors duration-200 cursor-pointer bg-transparent border-none"
-          >
-            ENROLL
-          </button>
-        </nav>
+        </div>
 
-        {/* Action Button */}
+        {/* Action Button: Filled Black CTA */}
         <div>
           <button
             onClick={onRequestAccess}
-            className="btn-electric-iris"
+            className="btn-dark-filled text-[15px] py-2.5 px-5"
           >
-            ENROLL NOW
+            <span>ENROLL NOW</span>
+            <ArrowUpRight className="w-4 h-4 text-[#d1ffca]" />
           </button>
         </div>
-      </div>
+
+      </nav>
     </header>
   );
 }
