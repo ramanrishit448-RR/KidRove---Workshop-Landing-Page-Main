@@ -40,30 +40,30 @@ export default function Details() {
   ];
 
   return (
-    <section id="details" className="py-24 md:py-36 bg-[#e5e5e5]">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16">
+    <section id="details" className="section-saas bg-[#e5e5e5]">
+      <div className="container-saas space-y-12">
         
-        {/* Section Header */}
-        <div className="space-y-6 max-w-[760px]">
+        {/* Section Header with 48px-64px spacing */}
+        <div className="space-y-4 max-w-[760px] section-header-spacing">
           <div className="tag-mint">PROGRAM SNAPSHOT</div>
           <h2 className="text-display-lg-condensed">
             EVERYTHING YOU NEED TO KNOW AT A GLANCE.
           </h2>
-          <p className="text-[16px] leading-[1.3] text-[#444444] font-normal">
+          <p className="text-[16px] leading-[1.6] text-[#444444] font-normal">
             A premium summer experience designed for busy parents and curious kids — flexible, affordable, and rich in real learning outcomes.
           </p>
         </div>
 
-        {/* Flat White Cards Grid (32px radius, open breathing room) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+        {/* Clean Grid: 32px gap, 32px internal padding, equal heights */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {detailsData.map((item, index) => (
             <div
               key={index}
-              className="card-flat-white p-8 sm:p-10 flex flex-col justify-between space-y-8"
+              className="card-flat-white p-8 h-full flex flex-col justify-between space-y-6"
             >
-              <div className="space-y-5">
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-[10px] bg-[#f3f3f3]">
+                  <div className="p-2.5 rounded-[10px] bg-[#f3f3f3]">
                     {item.icon}
                   </div>
                   <span className="tag-voltage text-[11px]">
@@ -75,12 +75,12 @@ export default function Details() {
                   {item.label}
                 </div>
 
-                <h3 className="font-condensed-display text-[38px] font-bold text-[#000000] leading-[0.9]">
+                <h3 className="font-condensed-display text-[32px] font-bold text-[#000000] leading-[0.95]">
                   {item.value}
                 </h3>
               </div>
 
-              <p className="text-[14px] text-[#444444] leading-relaxed pt-5 border-t border-[#f3f3f3]">
+              <p className="text-[14px] text-[#444444] leading-[1.5] pt-4 border-t border-[#f3f3f3]">
                 {item.description}
               </p>
             </div>

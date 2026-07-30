@@ -29,14 +29,14 @@ export default function Navbar({ onRequestAccess, onNavigate }: NavbarProps) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-[8rem] flex items-center justify-center px-4 pointer-events-none">
+    <header className="sticky top-0 left-0 right-0 z-50 py-4 px-6 md:px-8 bg-[#e5e5e5]/80 backdrop-blur-md transition-all duration-300">
       
-      {/* Floating 48px Nav Pill Container */}
-      <nav className={`pointer-events-auto max-w-[1200px] w-full flex items-center justify-between px-6 py-3 rounded-[48px] bg-[#ffffff] transition-all duration-300 ${
-        isScrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.08)] bg-[#ffffff]" : "shadow-none"
+      {/* Centered 1280px Max-Width Navbar Pill */}
+      <nav className={`max-w-[1280px] mx-auto flex items-center justify-between px-6 py-3 rounded-[48px] bg-[#ffffff] transition-all duration-300 border border-black/5 ${
+        isScrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.06)]" : "shadow-none"
       }`}>
         
-        {/* Brand Mark Lockup */}
+        {/* Brand Mark */}
         <a 
           href="#" 
           className="flex items-center gap-3 text-[#000000] group"
@@ -48,13 +48,13 @@ export default function Navbar({ onRequestAccess, onNavigate }: NavbarProps) {
           <div className="w-8 h-8 rounded-full bg-[#000000] text-[#d1ffca] flex items-center justify-center font-bold text-[14px]">
             D
           </div>
-          <span className="font-condensed-display text-[24px] font-bold tracking-tight text-[#000000] uppercase">
+          <span className="font-condensed-display text-[22px] font-bold tracking-tight text-[#000000] uppercase">
             DAYOS AI
           </span>
         </a>
 
-        {/* Center Links with Monospace Indicators */}
-        <div className="hidden md:flex items-center space-x-8 text-[16px] font-medium text-[#444444]">
+        {/* Center Nav Links with Equal 32px Spacing */}
+        <div className="hidden md:flex items-center space-x-8 text-[14px] font-medium text-[#444444]">
           <button
             onClick={() => handleNavClick('details')}
             className="hover:text-[#000000] transition-colors cursor-pointer bg-transparent border-none flex items-center gap-2"
@@ -78,14 +78,14 @@ export default function Navbar({ onRequestAccess, onNavigate }: NavbarProps) {
           </button>
         </div>
 
-        {/* Action Button: Filled Black CTA */}
-        <div>
+        {/* Aligned Right CTA Button */}
+        <div className="flex items-center">
           <button
             onClick={onRequestAccess}
-            className="btn-dark-filled text-[15px] py-2.5 px-5"
+            className="btn-dark-filled text-[13px] py-2 px-4 rounded-[6px]"
           >
             <span>ENROLL NOW</span>
-            <ArrowUpRight className="w-4 h-4 text-[#d1ffca]" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#d1ffca]" />
           </button>
         </div>
 

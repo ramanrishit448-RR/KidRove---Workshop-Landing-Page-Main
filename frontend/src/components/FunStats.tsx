@@ -74,9 +74,10 @@ function AnimatedNumber({ value, suffix, isDecimal }: { value: number; suffix: s
 
 export default function FunStats() {
   return (
-    <section className="py-24 md:py-36 bg-[#e5e5e5]">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12">
+    <section className="section-saas bg-[#e5e5e5]">
+      <div className="container-saas space-y-8">
         
+        {/* Metric Label Row */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <span className="tag-mint font-mono-tag">
             COMMUNITY & SYSTEM METRICS
@@ -84,11 +85,12 @@ export default function FunStats() {
           <span className="font-mono-tag text-[#979797]">02 // AUDITED DATA</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Clean Responsive 4-Col Desktop / 2-Col Tablet / 1-Col Mobile Grid (32px Gap) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, idx) => (
             <div
               key={idx}
-              className="card-flat-white p-8 sm:p-10 flex flex-col justify-between space-y-6 min-h-[240px]"
+              className="card-flat-white p-8 h-full flex flex-col justify-between space-y-6"
             >
               <div className="flex items-center justify-between border-b border-[#f3f3f3] pb-4">
                 <span className="font-mono-tag text-[#979797]">{stat.monoTag}</span>
@@ -97,7 +99,7 @@ export default function FunStats() {
                 </div>
               </div>
 
-              {/* 80px Condensed Display Headline Number with Fluid Scaling */}
+              {/* Display Headline Number */}
               <div className="text-display-lg-condensed text-[#000000] font-bold tracking-tight">
                 <AnimatedNumber
                   value={stat.value}

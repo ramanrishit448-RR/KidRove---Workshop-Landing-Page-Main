@@ -43,28 +43,28 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faqs" className="py-24 md:py-36 bg-[#e5e5e5]">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16">
+    <section id="faqs" className="section-saas bg-[#e5e5e5]">
+      <div className="container-saas space-y-12">
 
-        {/* Section Header */}
-        <div className="space-y-6 max-w-[760px]">
+        {/* Section Header with 48px-64px spacing */}
+        <div className="space-y-4 max-w-[760px] section-header-spacing">
           <div className="tag-mint">PARENTS ASK US</div>
           <h2 className="text-display-lg-condensed">
             FREQUENTLY ASKED QUESTIONS.
           </h2>
-          <p className="text-[16px] leading-[1.3] text-[#444444] font-normal">
+          <p className="text-[16px] leading-[1.6] text-[#444444] font-normal">
             Honest answers to help you feel confident in choosing the right laboratory program for your child.
           </p>
         </div>
 
-        {/* Accordion Cards */}
-        <div className="space-y-5">
+        {/* Accordion Cards with 32px Internal Padding */}
+        <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="card-flat-white p-8 sm:p-10 transition-colors duration-200"
+                className="card-flat-white p-8 transition-colors duration-200"
               >
                 <button
                   onClick={() => handleToggle(index)}
@@ -72,7 +72,7 @@ export default function FAQ() {
                 >
                   <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                     <span className="font-mono-tag text-[#979797] text-[13px]">{faq.code}</span>
-                    <span className="font-condensed-display text-[24px] sm:text-[30px] font-bold text-[#000000] group-hover:text-[#444444] leading-tight">
+                    <span className="font-condensed-display text-[24px] sm:text-[28px] font-bold text-[#000000] group-hover:text-[#444444] leading-tight">
                       {faq.question}
                     </span>
                   </div>
@@ -82,7 +82,7 @@ export default function FAQ() {
                 </button>
 
                 {isOpen && (
-                  <div className="pt-6 mt-6 border-t border-[#f3f3f3] text-[16px] text-[#444444] leading-relaxed max-w-[920px]">
+                  <div className="pt-6 mt-6 border-t border-[#f3f3f3] text-[16px] text-[#444444] leading-[1.6] max-w-[920px]">
                     {faq.answer}
                   </div>
                 )}

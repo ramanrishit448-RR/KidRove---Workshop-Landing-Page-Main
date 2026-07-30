@@ -1,14 +1,14 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#000000] text-white py-16 px-6 md:px-12 border-t border-[#2f2f2f]">
-      <div className="max-w-[1200px] mx-auto space-y-12">
+    <footer className="bg-[#000000] text-white section-saas border-t border-[#2f2f2f]">
+      <div className="container-saas space-y-12">
         
-        {/* Massive Condensed Headline Footer Statement */}
+        {/* Condensed Display Headline Statement */}
         <div className="space-y-4 max-w-[800px]">
           <div className="tag-mint">
             DAYOS AI SHOWROOM
           </div>
-          <h2 className="font-condensed-display text-[48px] sm:text-[64px] leading-[0.9] text-white font-bold tracking-tight">
+          <h2 className="font-condensed-display text-[40px] sm:text-[56px] leading-[0.95] text-white font-bold tracking-tight">
             AI FOR BUSINESS & FUTURE THINKERS.
           </h2>
         </div>
