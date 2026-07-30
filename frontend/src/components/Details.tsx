@@ -1,124 +1,88 @@
-import { motion } from 'framer-motion';
 import { Users, Calendar, Globe, IndianRupee, Rocket } from 'lucide-react';
-import SectionHeader from './ui/SectionHeader';
 
 export default function Details() {
   const detailsData = [
     {
-      icon: <Users className="w-8 h-8 text-indigo-600" />,
-      label: 'Age Group',
+      icon: <Users className="w-6 h-6 text-[#8052ff]" />,
+      label: 'AGE GROUP',
       value: '8–14 Years',
       emoji: '🧒',
       description: 'Tailored tracks for curious beginners and budding tech enthusiasts alike.',
-      bgColor: 'bg-indigo-50 border-indigo-100 hover:shadow-indigo-100 dark:bg-indigo-950/30 dark:border-indigo-800/40',
     },
     {
-      icon: <Calendar className="w-8 h-8 text-pink-600" />,
-      label: 'Duration',
+      icon: <Calendar className="w-6 h-6 text-[#ffb829]" />,
+      label: 'DURATION',
       value: '4 Weeks',
       emoji: '📅',
       description: '8 live interactive sessions + project reviews, quizzes & mentor support.',
-      bgColor: 'bg-pink-50 border-pink-100 hover:shadow-pink-100 dark:bg-pink-950/30 dark:border-pink-800/40',
     },
     {
-      icon: <Globe className="w-8 h-8 text-purple-600" />,
-      label: 'Learning Mode',
+      icon: <Globe className="w-6 h-6 text-[#15846e]" />,
+      label: 'LEARNING MODE',
       value: '100% Online',
       emoji: '💻',
       description: 'Join from anywhere! Live Zoom classes with 3D simulators & digital labs.',
-      bgColor: 'bg-purple-50 border-purple-100 hover:shadow-purple-100 dark:bg-purple-950/30 dark:border-purple-800/40',
     },
     {
-      icon: <IndianRupee className="w-8 h-8 text-amber-600" />,
-      label: 'Program Fee',
+      icon: <IndianRupee className="w-6 h-6 text-[#8052ff]" />,
+      label: 'PROGRAM FEE',
       value: '₹2,999',
       emoji: '💰',
       description: 'All-inclusive: simulators, study materials, certificate & recordings.',
-      bgColor: 'bg-amber-50 border-amber-100 hover:shadow-amber-100 dark:bg-amber-950/30 dark:border-amber-800/40',
     },
     {
-      icon: <Rocket className="w-8 h-8 text-rose-600" />,
-      label: 'Start Date',
+      icon: <Rocket className="w-6 h-6 text-[#ffb829]" />,
+      label: 'START DATE',
       value: '15 July 2026',
       emoji: '🚀',
       description: 'Only 15 seats per batch — secure your child\'s spot before it fills up!',
-      bgColor: 'bg-rose-50 border-rose-100 hover:shadow-rose-100 dark:bg-rose-950/30 dark:border-rose-800/40',
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40, rotate: -2 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotate: 0,
-      transition: { type: 'spring' as const, stiffness: 120, damping: 14 },
-    },
-  };
-
   return (
-    <section id="details" className="py-20 bg-white dark:bg-slate-900 relative transition-colors duration-300 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          badge="Program Snapshot"
-          badgeEmoji="📋"
-          title="Everything You Need to"
-          highlight="Know at a Glance"
-          description="A premium summer experience designed for busy parents and curious kids — flexible, affordable, and packed with real learning outcomes."
-        />
+    <section id="details" className="py-24 md:py-36 bg-[#000000] relative overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 space-y-16">
+        
+        {/* Section Header */}
+        <div className="space-y-4 max-w-[680px]">
+          <div className="label-amber">PROGRAM SNAPSHOT</div>
+          <h2 className="text-heading-lg-dala text-white tracking-[-0.04em]">
+            Everything you need to know at a glance.
+          </h2>
+          <p className="text-body-light text-[#bdbdbd]">
+            A premium learning experience designed for busy parents and curious kids — flexible, accessible, and packed with real skill outcomes.
+          </p>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 justify-center"
-        >
+        {/* Floating Snapshot Grid on Pure Black Canvas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {detailsData.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={cardVariants}
-              whileHover={{ y: -10, scale: 1.04, rotate: index % 2 === 0 ? 1 : -1 }}
-              className={`flex flex-col p-6 rounded-3xl border bg-white dark:bg-slate-800/60 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-300 ${item.bgColor}`}
+              className="flex flex-col space-y-4 p-6 rounded-[24px] bg-[#000000] border-none group transition-transform duration-300 hover:-translate-y-1"
             >
-              <motion.span
-                className="text-2xl mb-2"
-                whileHover={{ scale: 1.3, rotate: 15 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                {item.emoji}
-              </motion.span>
+              <div className="flex items-center justify-between">
+                <div className="p-3 rounded-full bg-[#111111] inline-flex items-center justify-center">
+                  {item.icon}
+                </div>
+                <span className="text-2xl">{item.emoji}</span>
+              </div>
 
-              <motion.div
-                whileHover={{ rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 0.5 }}
-                className="mb-4 inline-flex p-3 bg-white dark:bg-slate-700/50 rounded-2xl shadow-sm w-fit"
-              >
-                {item.icon}
-              </motion.div>
-
-              <span className="text-xs font-bold uppercase tracking-wider text-kidrove-text-muted mb-1">
+              <div className="text-[12px] font-semibold uppercase tracking-[0.025em] text-[#8052ff]">
                 {item.label}
-              </span>
+              </div>
 
-              <h3 className="font-display font-extrabold text-2xl text-kidrove-text-dark mb-2">
+              <h3 className="text-[27px] font-normal text-white font-sans leading-tight">
                 {item.value}
               </h3>
 
-              <p className="text-sm text-kidrove-text-muted leading-relaxed flex-grow">
+              <p className="text-body-light text-[#bdbdbd] text-[15px] leading-relaxed flex-grow">
                 {item.description}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );

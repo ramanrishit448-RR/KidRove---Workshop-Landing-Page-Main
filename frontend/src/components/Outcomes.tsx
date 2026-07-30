@@ -1,193 +1,115 @@
-import { motion } from 'framer-motion';
-import { Cpu, Code, BrainCircuit, Lightbulb, Award, Star } from 'lucide-react';
-import SectionHeader from './ui/SectionHeader';
+import { Cpu, Code, BrainCircuit, Lightbulb, Award } from 'lucide-react';
 
 export default function Outcomes() {
   const outcomes = [
     {
-      icon: <BrainCircuit className="w-6 h-6 text-purple-600" />,
+      icon: <BrainCircuit className="w-6 h-6 text-[#8052ff]" />,
       title: 'Master Core AI Concepts',
       emoji: '🧠',
       desc: 'Discover how machines "think" — train AI to recognize faces, play games, and solve puzzles through kid-friendly experiments.',
-      badgeColor: 'bg-purple-100 dark:bg-purple-900/50',
     },
     {
-      icon: <Cpu className="w-6 h-6 text-pink-600" />,
+      icon: <Cpu className="w-6 h-6 text-[#ffb829]" />,
       title: 'Hands-on Robotics Simulators',
       emoji: '🦾',
       desc: 'Design, code & test virtual robots in 3D! Control sensors, motors, and arms — just like a real engineer.',
-      badgeColor: 'bg-pink-100 dark:bg-pink-900/50',
     },
     {
-      icon: <Code className="w-6 h-6 text-indigo-600" />,
+      icon: <Code className="w-6 h-6 text-[#15846e]" />,
       title: 'Coding Superpowers',
       emoji: '⌨️',
-      desc: 'Start with fun Scratch blocks, then level up to real Python — building confidence one project at a time.',
-      badgeColor: 'bg-indigo-100 dark:bg-indigo-900/50',
+      desc: 'Start with fun visual blocks, then level up to real Python — building confidence one project at a time.',
     },
     {
-      icon: <Lightbulb className="w-6 h-6 text-amber-600" />,
+      icon: <Lightbulb className="w-6 h-6 text-[#8052ff]" />,
       title: 'Creative Problem-Solving',
       emoji: '💡',
       desc: 'Learn to debug like a pro, plan step-by-step, and turn big ideas into working code — skills for life!',
-      badgeColor: 'bg-amber-100 dark:bg-amber-900/50',
     },
     {
-      icon: <Award className="w-6 h-6 text-rose-600" />,
+      icon: <Award className="w-6 h-6 text-[#ffb829]" />,
       title: 'Capstone Project & Certificate',
       emoji: '🏅',
-      desc: 'Showcase a unique AI/Robot project at the final exhibition and earn a Kids Lab Certificate of Excellence!',
-      badgeColor: 'bg-rose-100 dark:bg-rose-900/50',
+      desc: 'Showcase a unique AI/Robot project at the final exhibition and earn a verified Certificate of Excellence!',
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.12 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -40 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: 'spring' as const, stiffness: 100, damping: 14 },
-    },
-  };
-
   return (
-    <section id="outcomes" className="py-20 bg-gradient-to-b from-kidrove-bg to-white dark:to-slate-900 relative overflow-hidden transition-colors duration-300">
-      <div className="absolute top-1/3 right-0 w-80 h-80 bg-purple-100/50 dark:bg-purple-900/20 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-10 left-[-50px] w-64 h-64 bg-indigo-50/70 dark:bg-indigo-900/20 rounded-full blur-2xl -z-10" />
+    <section id="outcomes" className="py-24 md:py-36 bg-[#000000] relative overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: Outcomes List */}
+          <div className="lg:col-span-7 space-y-12">
+            <div className="space-y-4">
+              <div className="label-amber">LEARNING JOURNEY</div>
+              <h2 className="text-heading-lg-dala text-white tracking-[-0.04em]">
+                Skills your child will unlock.
+              </h2>
+              <p className="text-body-light text-[#bdbdbd] max-w-[560px]">
+                From curious beginner to confident creator — our step-by-step curriculum turns screen time into an active skill-building adventure.
+              </p>
+            </div>
 
-          <div className="lg:col-span-7">
-            <SectionHeader
-              badge="Learning Journey"
-              badgeEmoji="🎯"
-              title="Skills Your Child Will"
-              highlight="Unlock"
-              description="From curious beginner to confident creator — our step-by-step curriculum turns screen time into skill-building adventure time."
-              align="left"
-            />
-
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-50px' }}
-              className="space-y-5"
-            >
+            <div className="space-y-6">
               {outcomes.map((item, index) => (
-                <motion.div
+                <div
                   key={index}
-                  variants={itemVariants}
-                  whileHover={{ x: 8, scale: 1.01 }}
-                  className="flex items-start space-x-4 p-4 rounded-2xl border border-purple-50 dark:border-slate-700/50 bg-white dark:bg-slate-800/60 shadow-sm hover:shadow-lg transition-all duration-300 group cursor-default"
+                  className="flex items-start space-x-5 py-4 border-b border-[#141414] last:border-none group"
                 >
-                  <motion.div
-                    whileHover={{ rotate: [0, -12, 12, 0], scale: 1.1 }}
-                    className={`p-3 rounded-xl ${item.badgeColor} shrink-0 relative`}
-                  >
+                  <div className="p-3 rounded-full bg-[#111111] shrink-0">
                     {item.icon}
-                    <span className="absolute -top-2 -right-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                      {item.emoji}
-                    </span>
-                  </motion.div>
-                  <div>
-                    <h3 className="font-display font-bold text-lg text-kidrove-text-dark flex items-center gap-2">
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-[24px] font-normal text-white font-sans flex items-center gap-3">
                       <span>{item.title}</span>
-                      {index === 4 && (
-                        <motion.span
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                          className="flex items-center text-xs bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200 px-2 py-0.5 rounded-full font-bold"
-                        >
-                          <Star className="w-3 h-3 fill-amber-500 text-amber-500 mr-1" />
-                          Bonus!
-                        </motion.span>
-                      )}
+                      <span className="text-sm opacity-80">{item.emoji}</span>
                     </h3>
-                    <p className="text-sm text-kidrove-text-muted mt-1 leading-relaxed">
+                    <p className="text-body-light text-[#bdbdbd] text-[16px] leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
+          {/* Right Column: Code Simulation Peek */}
           <div className="lg:col-span-5 flex justify-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85, rotate: 5 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 80, damping: 12 }}
-              whileHover={{ rotate: -2, scale: 1.02 }}
-              className="w-full max-w-[400px] bg-gradient-to-tr from-kidrove-purple to-indigo-700 p-8 rounded-[40px] text-white shadow-2xl relative overflow-hidden"
-            >
-              <div className="absolute top-[-20%] right-[-20%] w-60 h-60 bg-white/10 rounded-full blur-2xl" />
-              <div className="absolute bottom-[-20%] left-[-20%] w-60 h-60 bg-pink-500/20 rounded-full blur-2xl" />
-
-              <motion.div
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute top-4 right-6 text-3xl"
-              >
-                🎮
-              </motion.div>
-
-              <div className="relative z-10 flex flex-col h-full justify-between">
-                <div>
-                  <div className="bg-white/15 px-3 py-1.5 rounded-full text-xs font-bold w-fit mb-6 border border-white/20 uppercase tracking-widest">
-                    Peek Inside a Class
-                  </div>
-                  <h3 className="font-display font-extrabold text-2xl mb-2 leading-tight">
-                    Learn by Building, Not Watching
-                  </h3>
-                  <p className="text-purple-100 text-sm leading-relaxed mb-6">
-                    Every session is a mini adventure — kids write real code, run virtual sensors, and see their robots come alive on screen!
-                  </p>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-xs font-bold text-purple-200">🤖 Robot Control Script</span>
-                    <motion.span
-                      animate={{ opacity: [1, 0.4, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                      className="w-2.5 h-2.5 rounded-full bg-green-400"
-                    />
-                  </div>
-                  <div className="font-mono text-xs text-purple-100 space-y-1.5">
-                    <div><span className="text-yellow-300">import</span> kidslab_robot <span className="text-yellow-300">as</span> bot</div>
-                    <div>&nbsp;</div>
-                    <div><span className="text-pink-300"># Start sensor checking</span></div>
-                    <div>bot.initialize_sonar()</div>
-                    <div>&nbsp;</div>
-                    <div><span className="text-yellow-300">while</span> bot.obstacle_distance &gt; <span className="text-emerald-300">10</span>:</div>
-                    <div className="pl-4">bot.move_forward(speed=<span className="text-emerald-300">50</span>)</div>
-                    <div>bot.turn_right(angle=<span className="text-emerald-300">90</span>)</div>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-white/10 flex items-center space-x-3 text-sm">
-                  <motion.div
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="bg-white/10 p-2 rounded-full"
-                  >
-                    <Award className="w-5 h-5 text-amber-300" />
-                  </motion.div>
-                  <span className="font-medium">100% of students ship a final project! 🎉</span>
-                </div>
+            <div className="w-full max-w-[420px] bg-[#000000] border border-[#262626] p-8 rounded-[24px] text-white space-y-6">
+              
+              <div className="flex justify-between items-center pb-3 border-b border-[#262626]">
+                <span className="text-[12px] font-semibold uppercase tracking-[0.35px] text-[#ffb829]">
+                  PEEK INSIDE A CLASS
+                </span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#8052ff] animate-ping" />
               </div>
-            </motion.div>
+
+              <div className="space-y-2">
+                <h3 className="text-[27px] font-normal leading-tight text-white font-sans">
+                  Build, test, and ship.
+                </h3>
+                <p className="text-body-light text-[#bdbdbd] text-[15px]">
+                  Every session is a mini adventure — kids write code, test virtual sensors, and see their creation come alive!
+                </p>
+              </div>
+
+              {/* Code snippet block */}
+              <div className="bg-[#0c0c0c] rounded-[16px] p-5 font-mono text-[13px] leading-relaxed space-y-1.5 text-[#bdbdbd] border border-[#1a1a1a]">
+                <div><span className="text-[#8052ff]">import</span> dala_robot <span className="text-[#8052ff]">as</span> bot</div>
+                <div className="text-[#ffb829]">// Initialize sonar sensor</div>
+                <div>bot.initialize_sonar()</div>
+                <div>&nbsp;</div>
+                <div><span className="text-[#8052ff]">while</span> bot.obstacle_distance &gt; <span className="text-[#15846e]">10</span>:</div>
+                <div className="pl-4">bot.move_forward(speed=<span className="text-[#15846e]">50</span>)</div>
+                <div className="pl-4 text-[#ffb829]">bot.turn_right(angle=<span className="text-[#15846e]">90</span>)</div>
+              </div>
+
+              <div className="pt-2 text-[14px] text-[#8052ff] font-medium flex items-center gap-2">
+                <span>★ 100% of students ship a capstone project!</span>
+              </div>
+
+            </div>
           </div>
 
         </div>
