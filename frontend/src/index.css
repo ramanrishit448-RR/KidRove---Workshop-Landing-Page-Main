@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors - Preserved Brand Palette */
+  /* ── Colors — Preserved Brand Palette ── */
   --color-carbon-black: #000000;
   --color-paper-white: #ffffff;
   --color-warm-canvas: #e5e5e5;
@@ -13,29 +13,37 @@
   --color-mint-chip: #d1ffca;
   --color-voltage-yellow: #fff100;
 
-  /* Typography — Font Families */
+  /* ── Typography — Font Families ── */
   --font-suisseintlcond: 'Barlow Condensed', ui-sans-serif, system-ui, sans-serif;
   --font-suisseintl: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-suisseintlmono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* 8px Spacing Scale System */
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-  --space-5: 48px;
-  --space-6: 64px;
-  --space-7: 80px;
-  --space-8: 96px;
+  /* ── 8px Spacing Scale System ── */
+  --space-1: 8px;    /* 8   */
+  --space-2: 16px;   /* 16  */
+  --space-3: 24px;   /* 24  */
+  --space-4: 32px;   /* 32  */
+  --space-5: 40px;   /* 40  */
+  --space-6: 48px;   /* 48  */
+  --space-7: 64px;   /* 64  */
+  --space-8: 80px;   /* 80  */
+  --space-9: 96px;   /* 96  */
+  --space-10: 128px; /* 128 */
 
-  /* Layout Boundaries & Fluid Section Padding */
+  /* ── Layout Boundaries ── */
   --page-max-width: 1280px;
-  --section-padding-fluid: clamp(48px, 7vw, 96px);
+  --content-max-width: 1200px;
 
-  /* Border Radius System */
+  /* ── Fluid Section Vertical Padding ──
+       Mobile: 64px → Tablet: 96px → Desktop: 128px */
+  --section-py: clamp(64px, 10vw, 128px);
+
+  /* ── Border Radius System ── */
+  --radius-xs: 4px;
   --radius-sm: 8px;
+  --radius-md: 12px;
   --radius-card: 24px;
-  --radius-card-lg: 32px;
+  --radius-card-lg: 28px;
   --radius-pill: 9999px;
 }
 
@@ -66,6 +74,7 @@ html, body {
   background-color: var(--color-warm-canvas);
   color: var(--color-carbon-black);
   font-family: var(--font-suisseintl);
+  font-size: 16px;
   line-height: 1.6;
   width: 100%;
   overflow-x: hidden;
@@ -73,28 +82,38 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fluid Container: Max 1280px Centered with Responsive Padding */
+/* ━━━ Fluid Container ━━━
+   Max 1280px, centered, responsive side padding
+   Mobile: 16px → Desktop: 48px */
 .container-saas {
   max-width: var(--page-max-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(16px, 4vw, 40px);
-  padding-right: clamp(16px, 4vw, 40px);
+  padding-left: clamp(16px, 4vw, 48px);
+  padding-right: clamp(16px, 4vw, 48px);
   width: 100%;
 }
 
-/* Fluid Major Section Vertical Spacing */
+/* ━━━ Section Vertical Rhythm ━━━
+   Creates consistent breathing room between sections.
+   Mobile: 64px → Desktop: 128px */
 .section-saas {
-  padding-top: var(--section-padding-fluid);
-  padding-bottom: var(--section-padding-fluid);
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
 }
 
-/* Fluid Section Header Offset */
+/* ━━━ Section Header Gap ━━━
+   Consistent spacing between section header and content.
+   Mobile: 32px → Desktop: 56px */
 .section-header-spacing {
-  margin-bottom: clamp(32px, 5vw, 64px);
+  margin-bottom: clamp(32px, 4.5vw, 56px);
 }
 
-/* Brutalist Display Typography Utilities with Precision Scale */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TYPOGRAPHY SYSTEM
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Shared condensed display properties */
 .font-condensed-display {
   font-family: var(--font-suisseintlcond);
   font-weight: 700;
@@ -103,9 +122,10 @@ html, body {
   letter-spacing: -0.03em;
 }
 
+/* XL Hero headline: 36px → 96px */
 .text-display-xl-condensed {
   font-family: var(--font-suisseintlcond);
-  font-size: clamp(34px, 6.5vw, 96px);
+  font-size: clamp(36px, 7vw, 96px);
   line-height: 0.95;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -113,9 +133,10 @@ html, body {
   color: var(--color-carbon-black);
 }
 
+/* LG Section titles: 28px → 56px */
 .text-display-lg-condensed {
   font-family: var(--font-suisseintlcond);
-  font-size: clamp(28px, 4.5vw, 64px);
+  font-size: clamp(28px, 4.5vw, 56px);
   line-height: 0.95;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -123,9 +144,10 @@ html, body {
   color: var(--color-carbon-black);
 }
 
+/* MD Card headings: 22px → 40px */
 .text-heading-lg-condensed {
   font-family: var(--font-suisseintlcond);
-  font-size: clamp(22px, 3.2vw, 40px);
+  font-size: clamp(22px, 3vw, 40px);
   line-height: 1.0;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -133,20 +155,32 @@ html, body {
   color: var(--color-carbon-black);
 }
 
+/* Mono metadata tags */
 .font-mono-tag {
   font-family: var(--font-suisseintlmono);
-  font-size: clamp(11px, 1.2vw, 12px);
+  font-size: 12px;
   letter-spacing: -0.03em;
 }
 
-/* Mint Tag Pill */
+/* Body text — fluid */
+.text-body {
+  font-size: clamp(15px, 1.1vw, 16px);
+  line-height: 1.65;
+  color: var(--color-slate);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COMPONENTS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── Mint Tag Pill ── */
 .tag-mint {
   background-color: var(--color-mint-chip);
   color: var(--color-carbon-black);
   border-radius: var(--radius-pill);
   padding: 6px 16px;
   font-family: var(--font-suisseintlmono);
-  font-size: clamp(11px, 1.2vw, 12px);
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: -0.03em;
   display: inline-flex;
@@ -155,22 +189,22 @@ html, body {
   max-width: 100%;
 }
 
-/* Voltage Yellow Highlight */
+/* ── Voltage Yellow Highlight ── */
 .tag-voltage {
   background-color: var(--color-voltage-yellow);
   color: var(--color-carbon-black);
   border-radius: var(--radius-pill);
   padding: 4px 12px;
   font-family: var(--font-suisseintlmono);
-  font-size: clamp(10px, 1.1vw, 12px);
+  font-size: 11px;
   font-weight: 500;
 }
 
-/* Flat Cards (Zero Shadow, Surface Contrast, Spacing-Rich) */
+/* ── Flat Cards ── */
 .card-flat-white {
   background-color: var(--color-paper-white);
-  border-radius: clamp(20px, 3vw, 32px);
-  padding: clamp(20px, 3vw, 32px);
+  border-radius: var(--radius-card);
+  padding: clamp(24px, 3vw, 32px);
   box-shadow: none;
   border: none;
 }
@@ -178,8 +212,8 @@ html, body {
 .card-inverted {
   background-color: var(--color-carbon-black);
   color: var(--color-paper-white);
-  border-radius: clamp(20px, 3vw, 32px);
-  padding: clamp(20px, 3vw, 32px);
+  border-radius: var(--radius-card);
+  padding: clamp(24px, 3vw, 32px);
   box-shadow: none;
   border: none;
 }
@@ -188,7 +222,10 @@ html, body {
   border-radius: clamp(32px, 5vw, 64px) clamp(32px, 5vw, 64px) 0px 0px;
 }
 
-/* Button Variants with Standardized Touch Target (Min 44px) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BUTTONS — Standardized 48px min-height, 8px radius
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .btn-dark-filled {
   background-color: var(--color-carbon-black);
   color: #ffffff;
@@ -197,12 +234,13 @@ html, body {
   min-height: 48px;
   font-size: 15px;
   font-weight: 500;
+  font-family: var(--font-suisseintl);
   border: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
   touch-action: manipulation;
 }
@@ -214,14 +252,19 @@ html, body {
 
 .btn-ghost-border {
   background-color: transparent;
-  border: 1.5px solid var(--color-slate);
+  border: 1.5px solid var(--color-ash);
   color: var(--color-slate);
   border-radius: var(--radius-sm);
-  padding: 13px 24px;
+  padding: 14px 28px;
   min-height: 48px;
   font-size: 15px;
   font-weight: 500;
+  font-family: var(--font-suisseintl);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   transition: all 0.2s ease;
   touch-action: manipulation;
 }
@@ -232,23 +275,25 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* Flat Input Field (16px to prevent iOS auto-zoom) */
+/* ── Flat Input Field (16px font prevents iOS auto-zoom) ── */
 .input-flat-mist {
   background-color: var(--color-mist-gray);
-  border: none;
+  border: 1px solid transparent;
   border-radius: var(--radius-sm);
   color: var(--color-carbon-black);
-  padding: 16px 20px;
+  padding: 14px 16px;
   font-size: 16px;
+  font-family: var(--font-suisseintl);
   outline: none;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .input-flat-mist:focus {
-  background-color: #e2e2e2;
+  background-color: #ebebeb;
+  border-color: var(--color-ash);
 }
 
-/* Minimalist Scrollbar */
+/* ━━━ Minimalist Scrollbar ━━━ */
 ::-webkit-scrollbar {
   width: 6px;
 }

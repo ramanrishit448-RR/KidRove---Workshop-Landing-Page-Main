@@ -85,109 +85,110 @@ export default function RegisterForm() {
     <section id="register" className="section-saas bg-[#e5e5e5]">
       <Confetti active={status === 'success'} />
 
-      <div className="max-w-[720px] mx-auto px-6 sm:px-8 space-y-8">
+      <div className="container-saas">
+        <div className="max-w-[640px] mx-auto">
 
-        {/* Urgency Highlight Tag */}
-        <div className="flex items-center justify-center">
-          <div className="tag-voltage font-mono text-[12px] flex items-center gap-2">
-            <span>🔥</span>
-            ONLY 8 SPOTS LEFT IN JULY BATCH — RESERVE NOW
-          </div>
-        </div>
-
-        <div className="space-y-4 text-center section-header-spacing">
-          <h2 className="text-display-lg-condensed">
-            RESERVE YOUR CHILD'S SPOT.
-          </h2>
-          <p className="text-[16px] text-[#444444] max-w-[520px] mx-auto leading-[1.6]">
-            Takes less than 60 seconds. No payment needed now — reserve a spot in the upcoming cohort!
-          </p>
-        </div>
-
-        {status === 'success' ? (
-          <div className="card-flat-white p-8 sm:p-12 text-center space-y-8">
-            <div className="w-16 h-16 rounded-full bg-[#d1ffca] text-[#000000] flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-8 h-8" />
+          {/* Urgency tag — centered */}
+          <div className="flex items-center justify-center mb-6">
+            <div className="tag-voltage font-mono text-[12px] flex items-center gap-2">
+              <span>🔥</span>
+              ONLY 8 SPOTS LEFT IN JULY BATCH — RESERVE NOW
             </div>
-            <h3 className="font-condensed-display text-[36px] font-bold text-[#000000]">
-              YOU'RE IN! WELCOME FUTURE INNOVATOR! 🎉
-            </h3>
-            <p className="text-[15px] text-[#444444] max-w-[460px] mx-auto leading-[1.6]">
-              Our team will reach out within 24 hours with onboarding details, class schedule, and a fun activity kit.
-            </p>
-            <button
-              onClick={() => setStatus('idle')}
-              className="btn-dark-filled px-8"
-            >
-              REGISTER ANOTHER CHILD
-            </button>
           </div>
-        ) : (
-          <div className="card-flat-white p-8 sm:p-12 space-y-6">
-            {status === 'error' && (
-              <div className="p-4 rounded-[10px] bg-red-100 border border-red-300 flex items-start gap-3 text-red-900 text-sm">
-                <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-bold">Submission Error</p>
-                  <p className="text-xs text-red-700 mt-0.5">{errorMessage}</p>
+
+          {/* Section header — centered */}
+          <div className="text-center section-header-spacing">
+            <h2 className="text-display-lg-condensed mb-4">
+              RESERVE YOUR CHILD'S SPOT.
+            </h2>
+            <p className="text-body max-w-[480px] mx-auto">
+              Takes less than 60 seconds. No payment needed now — reserve a spot in the upcoming cohort!
+            </p>
+          </div>
+
+          {status === 'success' ? (
+            <div className="card-flat-white p-8 sm:p-12 text-center flex flex-col items-center gap-8">
+              <div className="w-16 h-16 rounded-full bg-[#d1ffca] text-[#000000] flex items-center justify-center">
+                <CheckCircle2 className="w-8 h-8" />
+              </div>
+              <h3 className="font-condensed-display text-[#000000] leading-tight" style={{ fontSize: 'clamp(28px, 4vw, 36px)' }}>
+                YOU'RE IN! WELCOME FUTURE INNOVATOR! 🎉
+              </h3>
+              <p className="text-body max-w-[460px]">
+                Our team will reach out within 24 hours with onboarding details, class schedule, and a fun activity kit.
+              </p>
+              <button
+                onClick={() => setStatus('idle')}
+                className="btn-dark-filled"
+              >
+                REGISTER ANOTHER CHILD
+              </button>
+            </div>
+          ) : (
+            <div className="card-flat-white p-8 sm:p-12">
+              {status === 'error' && (
+                <div className="p-4 rounded-[10px] bg-red-100 border border-red-300 flex items-start gap-3 text-red-900 text-sm mb-6">
+                  <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold">Submission Error</p>
+                    <p className="text-xs text-red-700 mt-0.5">{errorMessage}</p>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div>
-                <label className="block text-[12px] font-mono uppercase text-[#979797] mb-2 font-medium">
-                  CHILD'S NAME 👦👧
-                </label>
-                <input
-                  type="text"
-                  disabled={status === 'loading'}
-                  placeholder="e.g. Aarav Sharma"
-                  className="input-flat-mist w-full"
-                  {...register('name')}
-                />
-                {errors.name && (
-                  <p className="text-xs text-red-600 font-medium mt-1.5">{errors.name.message}</p>
-                )}
-              </div>
+              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+                <div>
+                  <label className="block font-mono-tag uppercase text-[#979797] mb-2 font-medium">
+                    CHILD'S NAME 👦👧
+                  </label>
+                  <input
+                    type="text"
+                    disabled={status === 'loading'}
+                    placeholder="e.g. Aarav Sharma"
+                    className="input-flat-mist w-full"
+                    {...register('name')}
+                  />
+                  {errors.name && (
+                    <p className="text-xs text-red-600 font-medium mt-2">{errors.name.message}</p>
+                  )}
+                </div>
 
-              <div>
-                <label className="block text-[12px] font-mono uppercase text-[#979797] mb-2 font-medium">
-                  PARENT'S EMAIL 📧
-                </label>
-                <input
-                  type="email"
-                  disabled={status === 'loading'}
-                  placeholder="parent@example.com"
-                  className="input-flat-mist w-full"
-                  {...register('email')}
-                />
-                {errors.email && (
-                  <p className="text-xs text-red-600 font-medium mt-1.5">{errors.email.message}</p>
-                )}
-              </div>
+                <div>
+                  <label className="block font-mono-tag uppercase text-[#979797] mb-2 font-medium">
+                    PARENT'S EMAIL 📧
+                  </label>
+                  <input
+                    type="email"
+                    disabled={status === 'loading'}
+                    placeholder="parent@example.com"
+                    className="input-flat-mist w-full"
+                    {...register('email')}
+                  />
+                  {errors.email && (
+                    <p className="text-xs text-red-600 font-medium mt-2">{errors.email.message}</p>
+                  )}
+                </div>
 
-              <div>
-                <label className="block text-[12px] font-mono uppercase text-[#979797] mb-2 font-medium">
-                  CONTACT PHONE 📱
-                </label>
-                <input
-                  type="tel"
-                  disabled={status === 'loading'}
-                  placeholder="9876543210"
-                  className="input-flat-mist w-full"
-                  {...register('phone')}
-                />
-                {errors.phone && (
-                  <p className="text-xs text-red-600 font-medium mt-1.5">{errors.phone.message}</p>
-                )}
-              </div>
+                <div>
+                  <label className="block font-mono-tag uppercase text-[#979797] mb-2 font-medium">
+                    CONTACT PHONE 📱
+                  </label>
+                  <input
+                    type="tel"
+                    disabled={status === 'loading'}
+                    placeholder="9876543210"
+                    className="input-flat-mist w-full"
+                    {...register('phone')}
+                  />
+                  {errors.phone && (
+                    <p className="text-xs text-red-600 font-medium mt-2">{errors.phone.message}</p>
+                  )}
+                </div>
 
-              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="btn-dark-filled w-full justify-center py-4 text-[16px]"
+                  className="btn-dark-filled w-full justify-center py-4 text-[16px] mt-2"
                 >
                   {status === 'loading' ? (
                     <span className="flex items-center gap-2">
@@ -201,15 +202,15 @@ export default function RegisterForm() {
                     </>
                   )}
                 </button>
-              </div>
 
-              <p className="text-center text-[12px] font-mono text-[#979797] pt-2">
-                🔒 INFORMATION IS SAFE WITH US. NO SPAM EVER.
-              </p>
-            </form>
-          </div>
-        )}
+                <p className="text-center font-mono-tag text-[#979797]">
+                  🔒 INFORMATION IS SAFE WITH US. NO SPAM EVER.
+                </p>
+              </form>
+            </div>
+          )}
 
+        </div>
       </div>
     </section>
   );

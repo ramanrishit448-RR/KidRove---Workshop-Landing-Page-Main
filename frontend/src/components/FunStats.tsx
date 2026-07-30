@@ -75,22 +75,22 @@ function AnimatedNumber({ value, suffix, isDecimal }: { value: number; suffix: s
 export default function FunStats() {
   return (
     <section className="section-saas bg-[#e5e5e5]">
-      <div className="container-saas space-y-8">
+      <div className="container-saas">
         
-        {/* Metric Label Row */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        {/* Section header */}
+        <div className="flex flex-wrap items-center justify-between gap-4 section-header-spacing">
           <span className="tag-mint font-mono-tag">
             COMMUNITY & SYSTEM METRICS
           </span>
           <span className="font-mono-tag text-[#979797]">02 // AUDITED DATA</span>
         </div>
 
-        {/* Clean Responsive 4-Col Desktop / 2-Col Tablet / 1-Col Mobile Grid (32px Gap) */}
+        {/* 4-col desktop / 2-col tablet / 1-col mobile — 32px gap */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, idx) => (
             <div
               key={idx}
-              className="card-flat-white p-8 h-full flex flex-col justify-between space-y-6"
+              className="card-flat-white h-full flex flex-col justify-between gap-6"
             >
               <div className="flex items-center justify-between border-b border-[#f3f3f3] pb-4">
                 <span className="font-mono-tag text-[#979797]">{stat.monoTag}</span>
@@ -99,7 +99,6 @@ export default function FunStats() {
                 </div>
               </div>
 
-              {/* Display Headline Number */}
               <div className="text-display-lg-condensed text-[#000000] font-bold tracking-tight">
                 <AnimatedNumber
                   value={stat.value}

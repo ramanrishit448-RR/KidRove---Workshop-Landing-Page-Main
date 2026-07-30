@@ -28,25 +28,25 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="section-saas bg-[#e5e5e5]">
-      <div className="container-saas space-y-12">
+      <div className="container-saas">
         
-        {/* Section Header with 48px-64px spacing */}
-        <div className="space-y-4 max-w-[760px] section-header-spacing">
-          <div className="tag-mint">REAL STORIES</div>
-          <h2 className="text-display-lg-condensed">
+        {/* Section Header — standardized spacing */}
+        <div className="max-w-[760px] section-header-spacing">
+          <div className="tag-mint mb-4">REAL STORIES</div>
+          <h2 className="text-display-lg-condensed mb-4">
             KIDS & PARENTS LOVE THE SHOWROOM EXPERIENCE.
           </h2>
-          <p className="text-[16px] leading-[1.6] text-[#444444] font-normal">
+          <p className="text-body">
             Don't just take our word for it — hear from young innovators and families who've experienced the laboratory firsthand.
           </p>
         </div>
 
-        {/* 3-Col Desktop / 1-Col Mobile Grid (32px Gap, Equal Heights, 32px Internal Padding) */}
+        {/* 3-col desktop / 1-col mobile — 32px gap, equal heights */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((item, idx) => (
-            <div key={idx} className="card-inverted p-8 h-full flex flex-col justify-between space-y-6">
+            <div key={idx} className="card-inverted h-full flex flex-col justify-between gap-6">
               
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between border-b border-[#2f2f2f] pb-4">
                   <span className="font-mono-tag text-[#d1ffca] text-[11px]">
                     {item.tag}
@@ -61,14 +61,14 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-                <h3 className="font-condensed-display text-[26px] font-bold text-white leading-none">
+                <h3 className="font-condensed-display text-white leading-none" style={{ fontSize: 'clamp(22px, 2.5vw, 26px)' }}>
                   {item.name}
                 </h3>
                 <div className="font-mono-tag text-[#979797] text-[11px]">
                   {item.role}
                 </div>
 
-                <p className="text-[15px] text-[#e5e5e5] leading-[1.6] pt-2">
+                <p className="text-[15px] text-[#e5e5e5] leading-[1.65]">
                   "{item.quote}"
                 </p>
               </div>

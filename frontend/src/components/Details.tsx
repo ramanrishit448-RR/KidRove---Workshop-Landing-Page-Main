@@ -41,27 +41,27 @@ export default function Details() {
 
   return (
     <section id="details" className="section-saas bg-[#e5e5e5]">
-      <div className="container-saas space-y-12">
+      <div className="container-saas">
         
-        {/* Section Header with 48px-64px spacing */}
-        <div className="space-y-4 max-w-[760px] section-header-spacing">
-          <div className="tag-mint">PROGRAM SNAPSHOT</div>
-          <h2 className="text-display-lg-condensed">
+        {/* Section Header — standardized spacing */}
+        <div className="max-w-[760px] section-header-spacing">
+          <div className="tag-mint mb-4">PROGRAM SNAPSHOT</div>
+          <h2 className="text-display-lg-condensed mb-4">
             EVERYTHING YOU NEED TO KNOW AT A GLANCE.
           </h2>
-          <p className="text-[16px] leading-[1.6] text-[#444444] font-normal">
+          <p className="text-body">
             A premium summer experience designed for busy parents and curious kids — flexible, affordable, and rich in real learning outcomes.
           </p>
         </div>
 
-        {/* Clean Grid: 32px gap, 32px internal padding, equal heights */}
+        {/* 5-col desktop / 3-col tablet / 1-col mobile — 32px gap */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {detailsData.map((item, index) => (
             <div
               key={index}
-              className="card-flat-white p-8 h-full flex flex-col justify-between space-y-6"
+              className="card-flat-white h-full flex flex-col justify-between gap-6"
             >
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                   <div className="p-2.5 rounded-[10px] bg-[#f3f3f3]">
                     {item.icon}
@@ -75,12 +75,12 @@ export default function Details() {
                   {item.label}
                 </div>
 
-                <h3 className="font-condensed-display text-[32px] font-bold text-[#000000] leading-[0.95]">
+                <h3 className="font-condensed-display leading-[0.95] text-[#000000]" style={{ fontSize: 'clamp(26px, 3vw, 32px)' }}>
                   {item.value}
                 </h3>
               </div>
 
-              <p className="text-[14px] text-[#444444] leading-[1.5] pt-4 border-t border-[#f3f3f3]">
+              <p className="text-[14px] text-[#444444] leading-[1.55] pt-4 border-t border-[#f3f3f3]">
                 {item.description}
               </p>
             </div>
