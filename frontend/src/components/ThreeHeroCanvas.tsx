@@ -14,7 +14,7 @@ export default function ThreeHeroCanvas() {
     // Scene & Camera
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    camera.position.set(0, 1.5, 7);
+    camera.position.set(0, 1.2, 6.5);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -25,25 +25,25 @@ export default function ThreeHeroCanvas() {
     container.appendChild(renderer.domElement);
 
     // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
     scene.add(ambientLight);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 2.0);
-    dirLight.position.set(5, 8, 5);
-    dirLight.castShadow = true;
-    dirLight.shadow.mapSize.width = 1024;
-    dirLight.shadow.mapSize.height = 1024;
-    scene.add(dirLight);
+    const mainLight = new THREE.DirectionalLight(0xffffff, 2.5);
+    mainLight.position.set(6, 10, 6);
+    mainLight.castShadow = true;
+    mainLight.shadow.mapSize.width = 1024;
+    mainLight.shadow.mapSize.height = 1024;
+    scene.add(mainLight);
 
-    const fillLight = new THREE.DirectionalLight(0xd1ffca, 1.0);
-    fillLight.position.set(-5, -2, -2);
-    scene.add(fillLight);
+    const mintFillLight = new THREE.DirectionalLight(0xd1ffca, 1.2);
+    mintFillLight.position.set(-6, -3, -2);
+    scene.add(mintFillLight);
 
-    // Group for objects
+    // Main Group
     const group = new THREE.Group();
     scene.add(group);
 
-    // Helper: Create procedural Canvas Texture for Brand Badge Label
+    // Helper: Canvas texture for Brand Badge
     const createBadgeTexture = (text: string, bgColor: string, textColor: string) => {
       const canvas = document.createElement('canvas');
       canvas.width = 256;
@@ -53,84 +53,112 @@ export default function ThreeHeroCanvas() {
         ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, 256, 256);
         ctx.fillStyle = textColor;
-        ctx.font = 'bold 44px sans-serif';
+        ctx.font = '900 42px sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(text, 128, 128);
       }
-      const texture = new THREE.CanvasTexture(canvas);
-      return texture;
+      return new THREE.CanvasTexture(canvas);
     };
 
-    // Main Textured Cube (Concrete / Carbon Black feel)
-    const cubeGeo = new THREE.BoxGeometry(2.2, 2.2, 2.2);
+    // 1. Central Structural Cube
+    const cubeGeo = new THREE.BoxGeometry(2.4, 2.4, 2.4);
     const cubeMat = new THREE.MeshStandardMaterial({
-      color: 0x1f1f29,
-      roughness: 0.3,
-      metalness: 0.2,
+      color: 0x171717,
+      roughness: 0.25,
+      metalness: 0.15,
     });
     const mainCube = new THREE.Mesh(cubeGeo, cubeMat);
     mainCube.castShadow = true;
     mainCube.receiveShadow = true;
     group.add(mainCube);
 
-    // Brand Label Front Badge
-    const badgeMat = new THREE.MeshStandardMaterial({
+    // Badge 1 (Front)
+    const badgeMat1 = new THREE.MeshStandardMaterial({
       map: createBadgeTexture('DAYOS AI', '#d1ffca', '#000000'),
       roughness: 0.2,
     });
-    const badgeGeo = new THREE.PlaneGeometry(1.6, 0.8);
-    const badgeMesh = new THREE.Mesh(badgeGeo, badgeMat);
-    badgeMesh.position.set(0, 0, 1.11);
-    mainCube.add(badgeMesh);
+    const badgeMesh1 = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 0.9), badgeMat1);
+    badgeMesh1.position.set(0, 0, 1.21);
+    mainCube.add(badgeMesh1);
 
-    // Protruding Geometric Shape 1: Mint Chip Cylinder
-    const cylGeo = new THREE.CylinderGeometry(0.5, 0.5, 1.2, 32);
+    // Badge 2 (Top)
+    const badgeMat2 = new THREE.MeshStandardMaterial({
+      map: createBadgeTexture('KIDS LAB', '#fff100', '#000000'),
+      roughness: 0.2,
+    });
+    const badgeMesh2 = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.8), badgeMat2);
+    badgeMesh2.rotation.x = -Math.PI / 2;
+    badgeMesh2.position.set(0, 1.21, 0);
+    mainCube.add(badgeMesh2);
+
+    // 2. Mint Chip Cylinder
+    const cylGeo = new THREE.CylinderGeometry(0.55, 0.55, 1.3, 32);
     const cylMat = new THREE.MeshStandardMaterial({
       color: 0xd1ffca,
       roughness: 0.2,
     });
     const cylMesh = new THREE.Mesh(cylGeo, cylMat);
-    cylMesh.position.set(1.4, 0.8, 0.4);
+    cylMesh.position.set(1.6, 0.9, 0.5);
     cylMesh.rotation.z = Math.PI / 4;
     cylMesh.castShadow = true;
     group.add(cylMesh);
 
-    // Protruding Geometric Shape 2: Voltage Yellow Sphere
-    const sphereGeo = new THREE.SphereGeometry(0.65, 32, 32);
+    // 3. Voltage Yellow Glossy Sphere
+    const sphereGeo = new THREE.SphereGeometry(0.7, 32, 32);
     const sphereMat = new THREE.MeshStandardMaterial({
       color: 0xfff100,
       roughness: 0.1,
+      metalness: 0.1,
     });
     const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
-    sphereMesh.position.set(-1.3, -0.6, 0.6);
+    sphereMesh.position.set(-1.5, -0.7, 0.7);
     sphereMesh.castShadow = true;
     group.add(sphereMesh);
 
-    // Protruding Geometric Shape 3: Pink Accent Pyramid
-    const coneGeo = new THREE.ConeGeometry(0.6, 1.1, 4);
+    // 4. Metallic Pink Pyramid Accent
+    const coneGeo = new THREE.ConeGeometry(0.65, 1.2, 4);
     const coneMat = new THREE.MeshStandardMaterial({
       color: 0xfd79a8,
       roughness: 0.3,
     });
     const coneMesh = new THREE.Mesh(coneGeo, coneMat);
-    coneMesh.position.set(0.6, -1.2, -0.5);
+    coneMesh.position.set(0.7, -1.4, -0.6);
     coneMesh.rotation.x = Math.PI / 6;
     coneMesh.castShadow = true;
     group.add(coneMesh);
 
-    // Secondary Small Floating Badge Box (SAP / ORACLE)
-    const smallBoxGeo = new THREE.BoxGeometry(1.2, 0.7, 0.7);
+    // 5. Floating White Secondary Box (ORACLE / SAP)
+    const smallBoxGeo = new THREE.BoxGeometry(1.3, 0.75, 0.75);
     const smallBoxMat = new THREE.MeshStandardMaterial({
       color: 0xffffff,
-      roughness: 0.4,
+      roughness: 0.3,
     });
     const smallBox = new THREE.Mesh(smallBoxGeo, smallBoxMat);
-    smallBox.position.set(-1.2, 1.2, -0.8);
+    smallBox.position.set(-1.4, 1.3, -0.9);
     smallBox.castShadow = true;
     group.add(smallBox);
 
-    // Mouse Tracking Physics
+    // 6. Floating 3D Spark Particles
+    const sparkCount = 120;
+    const sparkGeo = new THREE.BufferGeometry();
+    const sparkPositions = new Float32Array(sparkCount * 3);
+    for (let i = 0; i < sparkCount * 3; i += 3) {
+      sparkPositions[i] = (Math.random() - 0.5) * 8;
+      sparkPositions[i + 1] = (Math.random() - 0.5) * 8;
+      sparkPositions[i + 2] = (Math.random() - 0.5) * 8;
+    }
+    sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPositions, 3));
+    const sparkMat = new THREE.PointsMaterial({
+      color: 0xd1ffca,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.7,
+    });
+    const sparkPoints = new THREE.Points(sparkGeo, sparkMat);
+    scene.add(sparkPoints);
+
+    // Mouse Parallax Physics
     let targetRotY = 0;
     let targetRotX = 0;
 
@@ -138,8 +166,8 @@ export default function ThreeHeroCanvas() {
       const rect = container.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / rect.width - 0.5;
       const ny = (e.clientY - rect.top) / rect.height - 0.5;
-      targetRotY = nx * 1.2;
-      targetRotX = ny * 0.8;
+      targetRotY = nx * 1.4;
+      targetRotX = ny * 0.9;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -162,12 +190,14 @@ export default function ThreeHeroCanvas() {
       const elapsedTime = clock.getElapsedTime();
 
       // Damped rotation interpolation
-      group.rotation.y += (targetRotY + elapsedTime * 0.2 - group.rotation.y) * 0.05;
-      group.rotation.x += (targetRotX + Math.sin(elapsedTime * 0.5) * 0.1 - group.rotation.x) * 0.05;
+      group.rotation.y += (targetRotY + elapsedTime * 0.15 - group.rotation.y) * 0.06;
+      group.rotation.x += (targetRotX + Math.sin(elapsedTime * 0.4) * 0.08 - group.rotation.x) * 0.06;
 
-      // Subtle float animation
-      sphereMesh.position.y = -0.6 + Math.sin(elapsedTime * 2) * 0.08;
-      cylMesh.rotation.y = elapsedTime * 0.8;
+      // Floating object animations
+      sphereMesh.position.y = -0.7 + Math.sin(elapsedTime * 2.2) * 0.1;
+      cylMesh.rotation.y = elapsedTime * 0.9;
+      smallBox.rotation.x = Math.sin(elapsedTime * 1.5) * 0.2;
+      sparkPoints.rotation.y = elapsedTime * 0.05;
 
       renderer.render(scene, camera);
       animationFrameId = requestAnimationFrame(animate);
@@ -187,7 +217,7 @@ export default function ThreeHeroCanvas() {
   }, []);
 
   return (
-    <div className="relative w-full h-[450px] sm:h-[550px] flex items-center justify-center pointer-events-auto">
+    <div className="relative w-full h-[380px] sm:h-[480px] md:h-[580px] flex items-center justify-center pointer-events-auto">
       <div ref={containerRef} className="w-full h-full block cursor-grab active:cursor-grabbing" />
     </div>
   );

@@ -82,10 +82,10 @@ export default function RegisterForm() {
   };
 
   return (
-    <section id="register" className="py-20 md:py-28 bg-[#e5e5e5]">
+    <section id="register" className="py-24 md:py-36 bg-[#e5e5e5]">
       <Confetti active={status === 'success'} />
 
-      <div className="max-w-[680px] mx-auto px-6 md:px-12 space-y-8">
+      <div className="max-w-[720px] mx-auto px-6 sm:px-10 lg:px-16 space-y-10">
 
         {/* Urgency Highlight */}
         <div className="flex items-center justify-center">
@@ -99,20 +99,20 @@ export default function RegisterForm() {
           <h2 className="text-display-lg-condensed">
             RESERVE YOUR CHILD'S SPOT.
           </h2>
-          <p className="text-[16px] text-[#444444] max-w-[500px] mx-auto">
+          <p className="text-[16px] text-[#444444] max-w-[540px] mx-auto leading-relaxed">
             Takes less than 60 seconds. No payment needed now — reserve a spot in the upcoming cohort!
           </p>
         </div>
 
         {status === 'success' ? (
-          <div className="card-flat-white p-10 text-center space-y-6">
+          <div className="card-flat-white p-10 sm:p-14 text-center space-y-8">
             <div className="w-16 h-16 rounded-full bg-[#d1ffca] text-[#000000] flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="font-condensed-display text-[36px] font-bold text-[#000000]">
+            <h3 className="font-condensed-display text-[38px] font-bold text-[#000000]">
               YOU'RE IN! WELCOME FUTURE INNOVATOR! 🎉
             </h3>
-            <p className="text-[15px] text-[#444444] max-w-[460px] mx-auto leading-relaxed">
+            <p className="text-[15px] text-[#444444] max-w-[480px] mx-auto leading-relaxed">
               Our team will reach out within 24 hours with onboarding details, class schedule, and a fun activity kit.
             </p>
             <button
@@ -123,9 +123,9 @@ export default function RegisterForm() {
             </button>
           </div>
         ) : (
-          <div className="card-flat-white p-8 md:p-10 space-y-6">
+          <div className="card-flat-white p-8 sm:p-12 md:p-14 space-y-8">
             {status === 'error' && (
-              <div className="p-4 rounded-[8px] bg-red-100 border border-red-300 flex items-start gap-3 text-red-900 text-sm">
+              <div className="p-4 rounded-[10px] bg-red-100 border border-red-300 flex items-start gap-3 text-red-900 text-sm">
                 <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-bold">Submission Error</p>
@@ -134,9 +134,9 @@ export default function RegisterForm() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
-                <label className="block text-[12px] font-mono uppercase text-[#979797] mb-2 font-medium">
+                <label className="block text-[12px] font-mono uppercase text-[#979797] mb-2.5 font-medium">
                   CHILD'S NAME 👦👧
                 </label>
                 <input
@@ -147,12 +147,12 @@ export default function RegisterForm() {
                   {...register('name')}
                 />
                 {errors.name && (
-                  <p className="text-xs text-red-600 font-medium mt-1.5">{errors.name.message}</p>
+                  <p className="text-xs text-red-600 font-medium mt-2">{errors.name.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-[12px] font-mono uppercase text-[#979797] mb-2 font-medium">
+                <label className="block text-[12px] font-mono uppercase text-[#979797] mb-2.5 font-medium">
                   PARENT'S EMAIL 📧
                 </label>
                 <input
@@ -163,12 +163,12 @@ export default function RegisterForm() {
                   {...register('email')}
                 />
                 {errors.email && (
-                  <p className="text-xs text-red-600 font-medium mt-1.5">{errors.email.message}</p>
+                  <p className="text-xs text-red-600 font-medium mt-2">{errors.email.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-[12px] font-mono uppercase text-[#979797] mb-2 font-medium">
+                <label className="block text-[12px] font-mono uppercase text-[#979797] mb-2.5 font-medium">
                   CONTACT PHONE 📱
                 </label>
                 <input
@@ -179,7 +179,7 @@ export default function RegisterForm() {
                   {...register('phone')}
                 />
                 {errors.phone && (
-                  <p className="text-xs text-red-600 font-medium mt-1.5">{errors.phone.message}</p>
+                  <p className="text-xs text-red-600 font-medium mt-2">{errors.phone.message}</p>
                 )}
               </div>
 

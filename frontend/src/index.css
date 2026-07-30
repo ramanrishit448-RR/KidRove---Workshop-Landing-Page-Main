@@ -74,7 +74,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Brutalist Display Typography Utilities */
+/* Brutalist Display Typography Utilities with Fluid Scaling */
 .font-condensed-display {
   font-family: var(--font-suisseintlcond);
   font-weight: 700;
@@ -85,7 +85,7 @@ html, body {
 
 .text-display-xl-condensed {
   font-family: var(--font-suisseintlcond);
-  font-size: clamp(64px, 9vw, 130px);
+  font-size: clamp(48px, 8.5vw, 130px);
   line-height: 0.9;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -95,7 +95,7 @@ html, body {
 
 .text-display-lg-condensed {
   font-family: var(--font-suisseintlcond);
-  font-size: clamp(48px, 6vw, 80px);
+  font-size: clamp(36px, 6vw, 80px);
   line-height: 0.9;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -105,7 +105,7 @@ html, body {
 
 .text-heading-lg-condensed {
   font-family: var(--font-suisseintlcond);
-  font-size: clamp(36px, 4vw, 48px);
+  font-size: clamp(28px, 4.5vw, 48px);
   line-height: 0.9;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -115,7 +115,7 @@ html, body {
 
 .text-secondary-heading {
   font-family: var(--font-suisseintl);
-  font-size: clamp(24px, 3vw, 40px);
+  font-size: clamp(22px, 3.5vw, 40px);
   line-height: 1.1;
   letter-spacing: -0.02em;
   font-weight: 500;
@@ -155,7 +155,7 @@ html, body {
   font-weight: 500;
 }
 
-/* Flat Cards (Zero Shadow, Zero Border, Surface Contrast) */
+/* Flat Cards (Zero Shadow, Zero Border, Surface Contrast, Spacing-Rich) */
 .card-flat-white {
   background-color: var(--color-paper-white);
   border-radius: 32px;
@@ -172,7 +172,13 @@ html, body {
 }
 
 .card-top-arc {
-  border-radius: 64px 64px 0px 0px;
+  border-radius: 48px 48px 0px 0px;
+}
+
+@media (min-width: 768px) {
+  .card-top-arc {
+    border-radius: 64px 64px 0px 0px;
+  }
 }
 
 /* Button Variants */
@@ -180,7 +186,7 @@ html, body {
   background-color: var(--color-carbon-black);
   color: #ffffff;
   border-radius: 8px;
-  padding: 16px 24px;
+  padding: 16px 28px;
   font-size: 16px;
   font-weight: 500;
   border: none;
@@ -188,13 +194,13 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
 }
 
 .btn-dark-filled:hover {
   background-color: #222222;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .btn-ghost-border {
@@ -202,7 +208,7 @@ html, body {
   border: 1.5px solid var(--color-slate);
   color: var(--color-slate);
   border-radius: 4px;
-  padding: 14px 20px;
+  padding: 15px 24px;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -212,6 +218,7 @@ html, body {
 .btn-ghost-border:hover {
   border-color: var(--color-carbon-black);
   color: var(--color-carbon-black);
+  transform: translateY(-2px);
 }
 
 /* Flat Input Field */
@@ -220,14 +227,14 @@ html, body {
   border: none;
   border-radius: 8px;
   color: var(--color-carbon-black);
-  padding: 14px 18px;
-  font-size: 15px;
+  padding: 16px 20px;
+  font-size: 16px;
   outline: none;
   transition: background-color 0.2s ease;
 }
 
 .input-flat-mist:focus {
-  background-color: #e8e8e8;
+  background-color: #e2e2e2;
 }
 
 /* Minimalist Scrollbar */

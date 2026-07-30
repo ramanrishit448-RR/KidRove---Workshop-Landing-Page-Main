@@ -27,31 +27,31 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 md:py-28 bg-[#e5e5e5]">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 space-y-12">
+    <section className="py-24 md:py-36 bg-[#e5e5e5]">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16">
         
         {/* Section Header */}
-        <div className="space-y-4 max-w-[720px]">
+        <div className="space-y-6 max-w-[760px]">
           <div className="tag-mint">REAL STORIES</div>
           <h2 className="text-display-lg-condensed">
             KIDS & PARENTS LOVE THE SHOWROOM EXPERIENCE.
           </h2>
-          <p className="text-[16px] leading-[1.25] text-[#444444] font-normal">
+          <p className="text-[16px] leading-[1.3] text-[#444444] font-normal">
             Don't just take our word for it — hear from young innovators and families who've experienced the laboratory firsthand.
           </p>
         </div>
 
-        {/* Inverted Dark Cards Grid (#000000 background, 32px radius) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Inverted Dark Cards Grid (#000000 background, 32px radius, open padding) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {testimonials.map((item, idx) => (
-            <div key={idx} className="card-inverted p-8 flex flex-col justify-between space-y-6">
+            <div key={idx} className="card-inverted p-8 sm:p-10 md:p-12 flex flex-col justify-between space-y-8">
               
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-[#2f2f2f] pb-4">
+              <div className="space-y-5">
+                <div className="flex items-center justify-between border-b border-[#2f2f2f] pb-5">
                   <span className="font-mono-tag text-[#d1ffca] text-[11px]">
                     {item.tag}
                   </span>
-                  <div className="w-8 h-8 rounded-full overflow-hidden border border-[#444444] shrink-0">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-[#444444] shrink-0">
                     <img
                       src={item.avatar}
                       alt={item.name}
@@ -61,7 +61,7 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-                <h3 className="font-condensed-display text-[28px] font-bold text-white leading-none">
+                <h3 className="font-condensed-display text-[30px] font-bold text-white leading-none">
                   {item.name}
                 </h3>
                 <div className="font-mono-tag text-[#979797] text-[11px]">
@@ -73,7 +73,7 @@ export default function Testimonials() {
                 </p>
               </div>
 
-              <div className="text-[13px] font-mono text-[#d1ffca] pt-4 border-t border-[#2f2f2f] flex items-center justify-between">
+              <div className="text-[13px] font-mono text-[#d1ffca] pt-5 border-t border-[#2f2f2f] flex items-center justify-between">
                 <span>VERIFIED REVIEW</span>
                 <span>★ 5.0</span>
               </div>

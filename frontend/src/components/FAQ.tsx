@@ -43,46 +43,46 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faqs" className="py-20 md:py-28 bg-[#e5e5e5]">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 space-y-12">
+    <section id="faqs" className="py-24 md:py-36 bg-[#e5e5e5]">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16">
 
         {/* Section Header */}
-        <div className="space-y-4 max-w-[720px]">
+        <div className="space-y-6 max-w-[760px]">
           <div className="tag-mint">PARENTS ASK US</div>
           <h2 className="text-display-lg-condensed">
             FREQUENTLY ASKED QUESTIONS.
           </h2>
-          <p className="text-[16px] leading-[1.25] text-[#444444] font-normal">
+          <p className="text-[16px] leading-[1.3] text-[#444444] font-normal">
             Honest answers to help you feel confident in choosing the right laboratory program for your child.
           </p>
         </div>
 
         {/* Accordion Cards */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="card-flat-white p-6 transition-colors duration-200"
+                className="card-flat-white p-8 sm:p-10 transition-colors duration-200"
               >
                 <button
                   onClick={() => handleToggle(index)}
-                  className="flex justify-between items-center w-full text-left bg-transparent border-none cursor-pointer group"
+                  className="flex justify-between items-center w-full text-left bg-transparent border-none cursor-pointer group gap-4"
                 >
-                  <div className="flex items-center space-x-4">
+                  <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                     <span className="font-mono-tag text-[#979797] text-[13px]">{faq.code}</span>
-                    <span className="font-condensed-display text-[24px] sm:text-[28px] font-bold text-[#000000] group-hover:text-[#444444] leading-tight">
+                    <span className="font-condensed-display text-[24px] sm:text-[30px] font-bold text-[#000000] group-hover:text-[#444444] leading-tight">
                       {faq.question}
                     </span>
                   </div>
-                  <div className={`p-2 rounded-[8px] bg-[#f3f3f3] transition-transform duration-300 ${isOpen ? 'rotate-180 bg-[#000000] text-white' : 'text-[#000000]'}`}>
+                  <div className={`p-2.5 rounded-[10px] bg-[#f3f3f3] shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-[#000000] text-white' : 'text-[#000000]'}`}>
                     <ChevronDown className="w-5 h-5" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="pt-4 mt-4 border-t border-[#f3f3f3] text-[16px] text-[#444444] leading-relaxed max-w-[900px]">
+                  <div className="pt-6 mt-6 border-t border-[#f3f3f3] text-[16px] text-[#444444] leading-relaxed max-w-[920px]">
                     {faq.answer}
                   </div>
                 )}

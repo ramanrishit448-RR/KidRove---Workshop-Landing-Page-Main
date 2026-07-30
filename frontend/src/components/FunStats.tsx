@@ -74,30 +74,30 @@ function AnimatedNumber({ value, suffix, isDecimal }: { value: number; suffix: s
 
 export default function FunStats() {
   return (
-    <section className="py-20 bg-[#e5e5e5]">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 space-y-8">
+    <section className="py-24 md:py-36 bg-[#e5e5e5]">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12">
         
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-4">
           <span className="tag-mint font-mono-tag">
             COMMUNITY & SYSTEM METRICS
           </span>
           <span className="font-mono-tag text-[#979797]">02 // AUDITED DATA</span>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, idx) => (
             <div
               key={idx}
-              className="card-flat-white p-6 flex flex-col justify-between space-y-4 min-h-[220px]"
+              className="card-flat-white p-8 sm:p-10 flex flex-col justify-between space-y-6 min-h-[240px]"
             >
-              <div className="flex items-center justify-between border-b border-[#f3f3f3] pb-3">
+              <div className="flex items-center justify-between border-b border-[#f3f3f3] pb-4">
                 <span className="font-mono-tag text-[#979797]">{stat.monoTag}</span>
-                <div className="p-2 rounded-[8px] bg-[#f3f3f3]">
+                <div className="p-2.5 rounded-[10px] bg-[#f3f3f3]">
                   {stat.icon}
                 </div>
               </div>
 
-              {/* 80px Condensed Display Headline Number */}
+              {/* 80px Condensed Display Headline Number with Fluid Scaling */}
               <div className="text-display-lg-condensed text-[#000000] font-bold tracking-tight">
                 <AnimatedNumber
                   value={stat.value}
@@ -106,7 +106,7 @@ export default function FunStats() {
                 />
               </div>
 
-              <div className="text-[14px] font-medium text-[#444444]">
+              <div className="text-[15px] font-medium text-[#444444]">
                 {stat.label}
               </div>
             </div>
